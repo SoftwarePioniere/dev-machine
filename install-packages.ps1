@@ -1,3 +1,21 @@
+function runX() {
+  param(
+    [string] $name,
+    [string] $cmd,
+    [string[]] $parms
+  )
+
+  $global:LASTEXITCODE = 0
+
+  Write-Host "=============================================================================================="
+  Write-Host "$name -- $cmd $parms"
+  Write-Host "=============================================================================================="
+  & $cmd $parms
+
+  if ($LASTEXITCODE -ne 0) { throw 'error' }
+
+}
+
 function choc() {
   param(
     [string] $name,
@@ -37,14 +55,8 @@ function choc() {
     $p += $params
   }
 
-  $global:LASTEXITCODE = 0
-
-  Write-Host "=============================================================================================="
-  Write-Host "$name -- $cmd $p"
-  Write-Host "=============================================================================================="
-  & $cmd $p
-
-  if ($LASTEXITCODE -ne 0) { throw 'error' }
+  runX -name $name -cmd $cmd -parms $p
+ 
 }
 
 $localpacks = (choco list --localonly)
