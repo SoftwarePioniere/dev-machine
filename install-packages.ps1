@@ -26,6 +26,7 @@ function choc() {
   }
 
   $p += $name
+  $p += '-y'
 
   if ($installarguments) {
     $p += '--install-arguments="' + $installarguments + '"'
@@ -37,7 +38,7 @@ function choc() {
   }
 
   Write-Host " run: $cmd $p"
-  # & $cmd $p
+  & $cmd $p
 }
 
 $localpacks = (choco list --localonly)
