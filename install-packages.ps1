@@ -19,7 +19,7 @@ function choc() {
   $p = @()
 
   if ($localinstalled) {
-    $p += 'update'
+    $p += 'upgrade'
   } else 
   {
     $p += 'install'
