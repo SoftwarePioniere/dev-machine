@@ -65,7 +65,7 @@ $packs = @(
   'dotnetcore-sdk',
   'jre8',
   'paint.net',
-  'whatsapp'
+  'whatsapp',  
 )
 
 $packs | foreach { choc -name $_ -installedpackages $localpacks}
