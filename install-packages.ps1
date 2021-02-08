@@ -37,8 +37,14 @@ function choc() {
     $p += $params
   }
 
-  Write-Host " run: $cmd $p"
+  $global:LASTEXITCODE = 0
+
+  Write-Host "=============================================================================================="
+  Write-Host "$name -- $cmd $p"
+  Write-Host "=============================================================================================="
   & $cmd $p
+
+  if ($LASTEXITCODE -ne 0) { throw 'error' }
 }
 
 $localpacks = (choco list --localonly)
@@ -65,7 +71,7 @@ $packs = @(
   'dotnetcore-sdk',
   'jre8',
   'paint.net',
-  'whatsapp',  
+  'whatsapp'  
 )
 
 $packs | foreach { choc -name $_ -installedpackages $localpacks}
