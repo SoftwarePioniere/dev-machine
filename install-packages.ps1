@@ -73,7 +73,8 @@ $packs = @(
   'paint.net',
   'whatsapp',
   'spotify',
-  'signal'
+  'signal',
+  'microsoft-teams'
 )
 
 $packs | foreach { choc -name $_ -installedpackages $localpacks}
