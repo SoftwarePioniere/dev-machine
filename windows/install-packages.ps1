@@ -62,6 +62,7 @@ function choc() {
 $localpacks = (choco list --localonly)
 
 $packs = @(
+  'microsoft-teams',
   'firefoxesr',
   'googlechrome',
   '7zip.install',
@@ -86,7 +87,7 @@ $packs = @(
   'whatsapp',
   'spotify',
   'signal',
-  'microsoft-teams'
+  'rdmfree'
 )
 
 $packs | foreach { choc -name $_ -installedpackages $localpacks}

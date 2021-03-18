@@ -1,6 +1,6 @@
 # dev-machine
 
-my windows dev machine setup
+my dev machine setup
 
 # REQUIREMENTS
 
@@ -9,6 +9,10 @@ Start-Process PowerShell -Verb RunAs
 powershell -Command "Start-Process PowerShell -Verb RunAs
 ```
 
-## Chocolatey
+## Windows: Chocolatey
 
 https://chocolatey.org/install
+
+## MacOS: Homebrew
+
+https://brew.sh/
