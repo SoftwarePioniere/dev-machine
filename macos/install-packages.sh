@@ -1,5 +1,7 @@
-brew install git
+brew update 
 
+brew install git
+brew install azure-cli
 
 brew install --cask powershell
 brew install --cask dotnet-sdk
