@@ -68,7 +68,7 @@ $packs = @(
   '7zip.install',
   'notepad2',
   'adobereader',
-  'terminals',
+  # 'terminals',
   'curl',
   'putty.install',
   'postman',
