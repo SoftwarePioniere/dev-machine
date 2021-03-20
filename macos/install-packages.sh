@@ -20,6 +20,7 @@ brew install --cask mongodb-compass
 brew install docker
 brew install --cask google-chrome
 brew install --cask microsoft-edge
+brew install --cask whatsapp
 
 # brew install --cask android-platform-tools
 # brew install --cask android-studio
