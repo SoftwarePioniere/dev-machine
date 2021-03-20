@@ -1,12 +1,16 @@
 brew update 
 
+brew outdated
+brew outdated
+
+
 brew install git
 brew install azure-cli
 
 brew install --cask powershell
 brew install --cask dotnet-sdk
 brew install --cask visual-studio-code
-brew install --cask remote-desktop-manager
+# brew install --cask remote-desktop-manager
 brew install --cask jetbrains-toolbox
 brew install --cask onedrive
 brew install --cask microsoft-teams
@@ -21,6 +25,8 @@ brew install docker
 brew install --cask google-chrome
 brew install --cask microsoft-edge
 brew install --cask whatsapp
+brew install --cask robo-3t
+
 
 # brew install --cask android-platform-tools
 # brew install --cask android-studio
