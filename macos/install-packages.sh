@@ -1,8 +1,6 @@
 brew update 
 
 brew outdated
-brew outdated
-
 
 brew install git
 brew install azure-cli
@@ -21,7 +19,7 @@ brew install --cask microsoft-azure-storage-explorer
 brew install --cask azure-data-studio
 brew install --cask mongodb-compass
 
-brew install docker
+brew install --cask docker
 brew install --cask google-chrome
 brew install --cask microsoft-edge
 brew install --cask whatsapp
