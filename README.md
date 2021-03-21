@@ -18,7 +18,7 @@ https://chocolatey.org/install
 https://brew.sh/
 
 
-# Azure Devops
+# SSH
 
 https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops
 
