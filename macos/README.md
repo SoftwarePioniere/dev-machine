@@ -1,3 +1,12 @@
+# MACOS
+
+## LINKS
+
+- https://brew.sh
+- https://developer.apple.com/download/
+
+## SOFTWARE
+
 ```
 
 brew update 
@@ -38,15 +47,19 @@ brew install --cask rectangle
 # brew install --cask android-platform-tools
 # brew install --cask android-studio
 
-
 ```
 
-
-https://brew.sh
-
-# App Store
-
-App Store:
+## App Store
 
 - xcode
-- xcode-command-line
+
+
+## SSH
+
+```
+# restart ssh agent
+sudo launchctl stop com.openssh.sshd
+sudo launchctl start com.openssh.sshd
+```
+
+https://technikales.com/quick-steps-to-connect-to-github-through-ssh-in-mac/
