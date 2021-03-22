@@ -38,7 +38,15 @@ brew install --cask rectangle
 # brew install --cask android-platform-tools
 # brew install --cask android-studio
 
+
 ```
 
 
 https://brew.sh
+
+# App Store
+
+App Store:
+
+- xcode
+- xcode-command-line
