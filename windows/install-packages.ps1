@@ -68,17 +68,18 @@ $packs = @(
   '7zip.install',
   'notepad2',
   'adobereader',
-  # 'terminals',
+  'terminals',
   'curl',
   'putty.install',
   'postman',
   'azure-cli',
   'bitwarden',
   'eartrumpet'
+  'snagit',
   'docker-for-windows',
   'jetbrainstoolbox',
   'vscode',
-  'nodejs-lts',
+  'powertoys',
   'robo3t.install',
   'redis-desktop-manager',
   'dotnetcore-sdk',
@@ -95,3 +96,7 @@ $packs | foreach { choc -name $_ -installedpackages $localpacks}
 choc -name 'powershell-core' -installarguments 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1' -installedpackages $localpacks
 choc -name 'git' -params '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration' -installedpackages $localpacks
 
+choco install nodejs-lts --version=12.22.1 -y
+
+
+  
