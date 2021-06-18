@@ -40,6 +40,8 @@ choco install -y nodejs-lts --version=12.22.1
 choco install -y robo3t.install
 choco install -y redis-desktop-manager
 
+choco install -y whatsapp --ignore-checksums
+choco install -y signal
 
 # ===================================================================================
 
@@ -49,11 +51,16 @@ code . $PROFILE
 Import-Module z
 
 # ===================================================================================
+$downloaddir = Join-Path $env:USERPROFILE -ChildPath 'Downloads'
+
+$lcuri = 'https://ftp.lancom.de/LANCOM-Archive/LC-VPN-Client/LC-Advanced-VPN-Client-Win-313-Rel-x86-64.exe'
+Invoke-WebRequest -Uri $lcuri -OutFile (Join-Path $downloaddir -ChildPath 'lc-vpn.exe')
+
+# ===================================================================================
 
 
 
-# choco install -y whatsapp
-# 'signal',
+
 # choco install paint.net
 # choco install -y eartrumpet
 
