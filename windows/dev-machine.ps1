@@ -35,6 +35,7 @@ choco install -y docker-for-windows
 choco install -y jetbrainstoolbox
 choco install -y vscode
 choco install -y nodejs-lts --version=12.22.1
+choco install -y visualstudio2019professional
 
 choco install -y robo3t.install
 choco install -y redis-desktop-manager
