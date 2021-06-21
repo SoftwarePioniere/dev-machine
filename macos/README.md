@@ -15,7 +15,7 @@ brew outdated
 
 # brew install git
 brew install azure-cli
-brew install node
+brew install node@12
 
 brew install --cask powershell
 brew install --cask dotnet-sdk
