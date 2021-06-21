@@ -63,3 +63,15 @@ sudo launchctl start com.openssh.sshd
 ```
 
 https://technikales.com/quick-steps-to-connect-to-github-through-ssh-in-mac/
+
+
+## GIT
+
+https://roboleary.net/vscode/2020/09/15/vscode-git.html
+
+git config --global core.editor "code --wait --new-window"
+git config --global diff.tool vscode
+git config --global difftool.vscode.cmd "code --wait --diff $LOCAL $REMOTE"
+git config --global merge.tool vscode
+git config --global mergetool.vscode.cmd "code --wait $MERGED"
+
