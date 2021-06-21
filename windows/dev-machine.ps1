@@ -8,7 +8,11 @@ choco install -y firefoxesr
 choco install -y googlechrome
 
 # choco install -y teamviewer --version=13.2.26558 --ignore-checksums
+choco install -y powershell-core --install-arguments='"ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1"'
 choco install -y microsoft-windows-terminal
+
+choco install -y git --params "/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration"
+choco install -y git-credential-manager-for-windows
 
 choco install -y 7zip.install
 choco install -y notepad2
@@ -16,13 +20,9 @@ choco install -y adobereader
 choco install -y terminals
 choco install -y bitwarden
 
-choco install -y git --params "/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration"
-choco install -y git-credential-manager-for-windows
-
 choco install -y dotnetcore-sdk
 choco install -y dotnet-sdk
 choco install -y jre8
-
 
 # wsl 
 https://docs.microsoft.com/de-de/windows/wsl/install-win10
@@ -31,7 +31,6 @@ https://docs.microsoft.com/de-de/windows/wsl/install-win10
 # choco install -y putty.install
 choco install -y postman
 choco install -y azure-cli 
-choco install -y powershell-core --install-arguments='"ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1"'
 choco install -y docker-for-windows 
 choco install -y jetbrainstoolbox
 choco install -y vscode
