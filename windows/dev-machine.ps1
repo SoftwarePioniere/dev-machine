@@ -41,9 +41,9 @@ choco install -y redis-desktop-manager
 
 choco install -y whatsapp --ignore-checksums
 choco install -y signal
+choco install -y microsoft-teams
 
 choco install -y adobe-creative-cloud --ignore-checksums
-choco install -y microsoft-teams
 
 # ===================================================================================
 
