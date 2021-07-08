@@ -43,6 +43,7 @@ brew install --cask whatsapp
 brew install --cask robo-3t
 
 brew install --cask rectangle
+brew install --cask oracle-jdk
 
 # brew install --cask android-platform-tools
 # brew install --cask android-studio
