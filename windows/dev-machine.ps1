@@ -2,7 +2,26 @@ git config --global user.name "Tobias Boeker"
 git config --global user.email tb@softwarepioniere.de
 
 # wsl 
-https://docs.microsoft.com/de-de/windows/wsl/install-win10
+https://docs.microsoft.com/de-de/windows/wsl/install
+wsl --install -d ubuntu-20.04
+https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+
+# ===================================================================================
+
+https://www.hanselman.com/blog/spend-less-time-cding-around-directories-with-the-powershell-z-shortcut
+Install-Module z -AllowClobber
+code . $PROFILE
+Import-Module z
+
+# ===================================================================================
+$downloaddir = Join-Path $env:USERPROFILE -ChildPath 'Downloads'
+
+$lcuri = 'https://ftp.lancom.de/LANCOM-Archive/LC-VPN-Client/LC-Advanced-VPN-Client-Win-313-Rel-x86-64.exe'
+Invoke-WebRequest -Uri $lcuri -OutFile (Join-Path $downloaddir -ChildPath 'lc-vpn.exe')
+
+# ===================================================================================
+
+
 
 # PACKAGES - install-packages.ps1 ===================================================================================
 
@@ -48,22 +67,6 @@ https://docs.microsoft.com/de-de/windows/wsl/install-win10
 
 # choco install -y adobe-creative-cloud --ignore-checksums
 
-# ===================================================================================
-
-https://www.hanselman.com/blog/spend-less-time-cding-around-directories-with-the-powershell-z-shortcut
-Install-Module z -AllowClobber
-code . $PROFILE
-Import-Module z
-
-# ===================================================================================
-$downloaddir = Join-Path $env:USERPROFILE -ChildPath 'Downloads'
-
-$lcuri = 'https://ftp.lancom.de/LANCOM-Archive/LC-VPN-Client/LC-Advanced-VPN-Client-Win-313-Rel-x86-64.exe'
-Invoke-WebRequest -Uri $lcuri -OutFile (Join-Path $downloaddir -ChildPath 'lc-vpn.exe')
-
-# ===================================================================================
-
-
 
 
 # choco install paint.net
@@ -78,35 +81,35 @@ Invoke-WebRequest -Uri $lcuri -OutFile (Join-Path $downloaddir -ChildPath 'lc-vp
 
 
 
-$packs = @(
-  'microsoft-teams',
-  'firefoxesr',
-  'googlechrome',
-  '7zip.install',
-  'notepad2',
-  'adobereader',
-  'terminals',
-  'curl',
-  'putty.install',
-  'postman',
-  'azure-cli',
-  'bitwarden',
-  'eartrumpet'
-  'snagit',
-  'docker-for-windows',
-  'jetbrainstoolbox',
-  'vscode',
-  'powertoys',
-  'robo3t.install',
-  'redis-desktop-manager',
-  'dotnetcore-sdk',
-  'jre8',
-  'paint.net',
-  'whatsapp',
-  'spotify',
-  'signal',
-  'rdmfree'
-)
+# $packs = @(
+#   'microsoft-teams',
+#   'firefoxesr',
+#   'googlechrome',
+#   '7zip.install',
+#   'notepad2',
+#   'adobereader',
+#   'terminals',
+#   'curl',
+#   'putty.install',
+#   'postman',
+#   'azure-cli',
+#   'bitwarden',
+#   'eartrumpet'
+#   'snagit',
+#   'docker-for-windows',
+#   'jetbrainstoolbox',
+#   'vscode',
+#   'powertoys',
+#   'robo3t.install',
+#   'redis-desktop-manager',
+#   'dotnetcore-sdk',
+#   'jre8',
+#   'paint.net',
+#   'whatsapp',
+#   'spotify',
+#   'signal',
+#   'rdmfree'
+# )
 
 
 
@@ -115,25 +118,25 @@ $packs = @(
 
 
 
-choco install -y microsoftazurestorageexplorer
-choco install -y sql-server-management-studio
+# choco install -y microsoftazurestorageexplorer
+# choco install -y sql-server-management-studio
 
-choco install -y vscode-powershell
-choco install -y vscode-csharp
-choco install -y vscode-docker
+# choco install -y vscode-powershell
+# choco install -y vscode-csharp
+# choco install -y vscode-docker
 
-choco install -y NugetPackageExplorer
-choco install -y nuget.commandline
-choco install -y gitversion.portable
+# choco install -y NugetPackageExplorer
+# choco install -y nuget.commandline
+# choco install -y gitversion.portable
 
-choco install -y dotnetcore-sdk
-choco install -y visualstudio2019professional
-
-
-choco install -y dotpeek
-
-choco install -y resharper
-choco install -y redis-64
+# choco install -y dotnetcore-sdk
+# choco install -y visualstudio2019professional
 
 
-start https://docs.microsoft.com/de-de/sql/azure-data-studio/download?view=sql-server-2017
+# choco install -y dotpeek
+
+# choco install -y resharper
+# choco install -y redis-64
+
+
+# start https://docs.microsoft.com/de-de/sql/azure-data-studio/download?view=sql-server-2017

@@ -26,7 +26,7 @@ function choc() {
     [string[]] $installedpackages
   )
 
-  Read-Host -Prompt $name
+
 
   $cmd = 'choco'
 
@@ -45,6 +45,7 @@ function choc() {
   } else 
   {
     $p += 'install'
+    Read-Host -Prompt "Install: $name"
   }
 
   $p += $name
@@ -77,9 +78,11 @@ Set-ExecutionPolicy Bypass -Scope Process
 $localpacks = (choco list --localonly)
 
 choc -name 'git' -params '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration' -installedpackages $localpacks
+choc -name 'powershell-core' -installarguments 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1' -installedpackages $localpacks
 
 $packs = @(
   'vscode',
+  'microsoft-windows-terminal',
   'microsoft-teams',
   'firefoxesr',
   'googlechrome',
@@ -104,15 +107,15 @@ $packs = @(
   'jre8',
   'paint.net',
   'whatsapp',
-  'spotify',
+  # 'spotify',
   'signal',
-  'rdmfree'
+  'rdmfree'  
 )
 
 $packs | foreach { choc -name $_ -installedpackages $localpacks}
 
-choc -name 'powershell-core' -installarguments 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1' -installedpackages $localpacks
 choc -name 'nodejs-lts' -version '12.22.1' -installedpackages $localpacks
 choc -name 'adobe-creative-cloud' -ignoreChecksums -installedpackages $localpacks
+choc -name 'visualstudio2019professional' -params '--locale en-US'
 
   
