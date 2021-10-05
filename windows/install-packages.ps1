@@ -24,6 +24,8 @@ function choc() {
     [string[]] $installedpackages
   )
 
+  Read-Host -Prompt $name
+
   $cmd = 'choco'
 
   $localinstalled = $false
