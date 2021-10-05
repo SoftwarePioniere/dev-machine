@@ -108,7 +108,7 @@ $packs | foreach { choc -name $_ -installedpackages $localpacks}
 
 choc -name 'powershell-core' -installarguments 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1' -installedpackages $localpacks
 choc -name 'git' -params '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration' -installedpackages $localpacks
-choc -name 'nodejs-lts' -version '12.22.1'
-choc -name 'adobe-creative-cloud' -ignoreChecksums
+choc -name 'nodejs-lts' -version '12.22.1' -installedpackages $localpacks
+choc -name 'adobe-creative-cloud' -ignoreChecksums -installedpackages $localpacks
 
   
