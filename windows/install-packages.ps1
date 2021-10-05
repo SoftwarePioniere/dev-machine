@@ -21,6 +21,8 @@ function choc() {
     [string] $name,
     [string] $installarguments,
     [string] $params,
+    [string] $version,
+    [switch] $ignoreChecksums,
     [string[]] $installedpackages
   )
 
@@ -51,12 +53,21 @@ function choc() {
   if ($installarguments) {
     $p += '--install-arguments="' + $installarguments + '"'
   }
+  
+  if ($ignoreChecksums) {
+    $p += '--ignore-checksums'
+  }
+  
+  if ($version) {
+    $p += '--version=' + $version
+  }
 
   if ($params) {
     $p += '--params'
     $p += $params
   }
-
+  
+  
   runX -name $name -cmd $cmd -parms $p
  
 }
@@ -97,8 +108,7 @@ $packs | foreach { choc -name $_ -installedpackages $localpacks}
 
 choc -name 'powershell-core' -installarguments 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1' -installedpackages $localpacks
 choc -name 'git' -params '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration' -installedpackages $localpacks
-
-choco install nodejs-lts --version=12.22.1 -y
-
+choc -name 'nodejs-lts' -version '12.22.1'
+choc -name 'adobe-creative-cloud' -ignoreChecksums
 
   
