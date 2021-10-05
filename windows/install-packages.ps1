@@ -96,6 +96,7 @@ $packs = @(
   'robo3t.install',
 #   'redis-desktop-manager',
   'dotnetcore-sdk',
+  'dotnet-sdk',
   'jre8',
   'paint.net',
   'whatsapp',
