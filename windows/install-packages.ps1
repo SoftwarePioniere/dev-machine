@@ -74,7 +74,7 @@ $packs = @(
   'postman',
   'azure-cli',
   'bitwarden',
-  'eartrumpet'
+  # 'eartrumpet'
   'snagit',
   'docker-for-windows',
   'jetbrainstoolbox',
