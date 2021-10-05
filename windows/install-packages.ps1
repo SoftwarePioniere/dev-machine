@@ -74,7 +74,10 @@ function choc() {
 
 $localpacks = (choco list --localonly)
 
+choc -name 'git' -params '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration' -installedpackages $localpacks
+
 $packs = @(
+  'vscode',
   'microsoft-teams',
   'firefoxesr',
   'googlechrome',
@@ -91,7 +94,6 @@ $packs = @(
   'snagit',
   'docker-for-windows',
   'jetbrainstoolbox',
-  'vscode',
   'powertoys',
   'robo3t.install',
 #   'redis-desktop-manager',
@@ -108,7 +110,6 @@ $packs = @(
 $packs | foreach { choc -name $_ -installedpackages $localpacks}
 
 choc -name 'powershell-core' -installarguments 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1' -installedpackages $localpacks
-choc -name 'git' -params '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration' -installedpackages $localpacks
 choc -name 'nodejs-lts' -version '12.22.1' -installedpackages $localpacks
 choc -name 'adobe-creative-cloud' -ignoreChecksums -installedpackages $localpacks
 
