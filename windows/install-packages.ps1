@@ -72,6 +72,8 @@ function choc() {
  
 }
 
+Set-ExecutionPolicy Bypass -Scope Process
+ 
 $localpacks = (choco list --localonly)
 
 choc -name 'git' -params '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration' -installedpackages $localpacks
