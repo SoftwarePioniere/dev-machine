@@ -94,7 +94,7 @@ $packs = @(
   'vscode',
   'powertoys',
   'robo3t.install',
-  'redis-desktop-manager',
+#   'redis-desktop-manager',
   'dotnetcore-sdk',
   'jre8',
   'paint.net',
