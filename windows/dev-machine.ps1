@@ -1,50 +1,52 @@
 git config --global user.name "Tobias Boeker"
 git config --global user.email tb@softwarepioniere.de
 
-# PACKAGES ===================================================================================
-
-# choco install -y microsoft-edge
-choco install -y firefoxesr
-choco install -y googlechrome
-
-# choco install -y teamviewer --version=13.2.26558 --ignore-checksums
-choco install -y powershell-core --install-arguments='"ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1"'
-choco install -y microsoft-windows-terminal
-
-choco install -y git --params "/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration"
-choco install -y git-credential-manager-for-windows
-
-choco install -y 7zip.install
-choco install -y notepad2
-choco install -y adobereader
-choco install -y terminals
-choco install -y bitwarden
-
-choco install -y dotnetcore-sdk
-choco install -y dotnet-sdk
-choco install -y jre8
-
 # wsl 
 https://docs.microsoft.com/de-de/windows/wsl/install-win10
 
-# choco install -y curl
-# choco install -y putty.install
-choco install -y postman
-choco install -y azure-cli 
-choco install -y docker-for-windows 
-choco install -y jetbrainstoolbox
-choco install -y vscode
-choco install -y nodejs-lts --version=12.22.1
-choco install -y visualstudio2019professional
+# PACKAGES - install-packages.ps1 ===================================================================================
 
-choco install -y robo3t.install
-choco install -y redis-desktop-manager
+# choco install -y microsoft-edge
+# choco install -y firefoxesr
+# choco install -y googlechrome
 
-choco install -y whatsapp --ignore-checksums
-choco install -y signal
-choco install -y microsoft-teams
+# # choco install -y teamviewer --version=13.2.26558 --ignore-checksums
+# choco install -y powershell-core --install-arguments='"ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1"'
+# choco install -y microsoft-windows-terminal
 
-choco install -y adobe-creative-cloud --ignore-checksums
+# choco install -y git --params "/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration"
+# choco install -y git-credential-manager-for-windows
+
+# choco install -y 7zip.install
+# choco install -y notepad2
+# choco install -y adobereader
+# choco install -y terminals
+# choco install -y bitwarden
+
+# choco install -y dotnetcore-sdk
+# choco install -y dotnet-sdk
+# choco install -y jre8
+
+
+
+# # choco install -y curl
+# # choco install -y putty.install
+# choco install -y postman
+# choco install -y azure-cli 
+# choco install -y docker-for-windows 
+# choco install -y jetbrainstoolbox
+# choco install -y vscode
+# choco install -y nodejs-lts --version=12.22.1
+# choco install -y visualstudio2019professional
+
+# choco install -y robo3t.install
+# choco install -y redis-desktop-manager
+
+# choco install -y whatsapp --ignore-checksums
+# choco install -y signal
+# choco install -y microsoft-teams
+
+# choco install -y adobe-creative-cloud --ignore-checksums
 
 # ===================================================================================
 
