@@ -109,7 +109,8 @@ $packs = @(
   'whatsapp',
   # 'spotify',
   'signal',
-  'rdmfree'  
+  'rdmfree',
+  'jdk8'
 )
 
 $packs | foreach { choc -name $_ -installedpackages $localpacks}
