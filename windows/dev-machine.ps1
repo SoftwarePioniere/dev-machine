@@ -21,6 +21,9 @@ Invoke-WebRequest -Uri $lcuri -OutFile (Join-Path $downloaddir -ChildPath 'lc-vp
 
 # ===================================================================================
 
+choco install -y visualstudio2019professional --package-parameters "--locale en-US"
+
+# ===================================================================================
 
 
 # PACKAGES - install-packages.ps1 ===================================================================================

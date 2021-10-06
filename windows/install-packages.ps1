@@ -42,8 +42,8 @@ function choc() {
 
   if ($localinstalled) {
     $p += 'upgrade'
-  } else 
-  {
+  }
+  else {
     $p += 'install'
     Read-Host -Prompt "Install: $name"
   }
@@ -77,8 +77,21 @@ Set-ExecutionPolicy Bypass -Scope Process
  
 $localpacks = (choco list --localonly)
 
-choc -name 'git' -params '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration' -installedpackages $localpacks
-choc -name 'powershell-core' -installarguments 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1' -installedpackages $localpacks
+$packs0 = @(
+  @{
+    name = 'git';
+    params = '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration';
+  },
+  @{
+    name = 'powershell-core';
+    installarguments = 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1';
+  }
+)
+
+$packs0 | ForEach-Object { choc -name $_.name -installarguments $_.installarguments -params $_.params  -installedpackages $localpacks }
+
+# choc -name 'git' -params '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration' -installedpackages $localpacks
+# choc -name 'powershell-core' -installarguments 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1' -installedpackages $localpacks
 
 $packs = @(
   'vscode',
@@ -101,7 +114,7 @@ $packs = @(
   'jetbrainstoolbox',
   'powertoys',
   'robo3t.install',
-#   'redis-desktop-manager',
+  #   'redis-desktop-manager',
   'dotnetcore-sdk',
   'dotnet-sdk',
   'jre8',
@@ -110,13 +123,14 @@ $packs = @(
   # 'spotify',
   'signal',
   'rdmfree',
-  'jdk8'
+  'jdk8',
+  'gradle'
 )
 
-$packs | foreach { choc -name $_ -installedpackages $localpacks}
+$packs | ForEach-Object { choc -name $_ -installedpackages $localpacks }
 
 choc -name 'nodejs-lts' -version '12.22.1' -installedpackages $localpacks
 choc -name 'adobe-creative-cloud' -ignoreChecksums -installedpackages $localpacks
-choc -name 'visualstudio2019professional' -params '--locale en-US'
+
 
   
