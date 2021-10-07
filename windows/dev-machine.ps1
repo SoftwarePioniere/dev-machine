@@ -19,6 +19,10 @@ $downloaddir = Join-Path $env:USERPROFILE -ChildPath 'Downloads'
 $lcuri = 'https://ftp.lancom.de/LANCOM-Archive/LC-VPN-Client/LC-Advanced-VPN-Client-Win-313-Rel-x86-64.exe'
 Invoke-WebRequest -Uri $lcuri -OutFile (Join-Path $downloaddir -ChildPath 'lc-vpn.exe')
 
+
+$lcuri = 'https://download.teamviewer.com/download/version_13x/TeamViewer_Setup.exe'
+Invoke-WebRequest -Uri $lcuri -OutFile (Join-Path $downloaddir -ChildPath 'TeamViewer_13_Setup.exe')
+
 # ===================================================================================
 
 choco install -y visualstudio2019professional --package-parameters "--locale en-US"
