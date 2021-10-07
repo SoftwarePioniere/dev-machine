@@ -13,6 +13,8 @@ powershell -Command "Start-Process PowerShell -Verb RunAs
 
 https://chocolatey.org/install
 
+https://chocolatey.org/packages
+
 ## MacOS: Homebrew
 
 https://brew.sh/
