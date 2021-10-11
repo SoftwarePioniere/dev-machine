@@ -27,7 +27,7 @@ Invoke-WebRequest -Uri $lcuri -OutFile (Join-Path $downloaddir -ChildPath 'TeamV
 
 choco install -y visualstudio2019professional --package-parameters "--locale en-US"
 choco install -y ssms
-
+choco install -y visualstudio2022professional-preview --pre --package-parameters "--locale en-US"
 # ===================================================================================
 
 

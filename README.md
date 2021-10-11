@@ -13,6 +13,14 @@ powershell -Command "Start-Process PowerShell -Verb RunAs
 
 https://chocolatey.org/install
 
+```
+
+choco install -y git --params '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration'
+
+git clone https://github.com/tboeker/dev-machine.git
+
+```
+
 https://chocolatey.org/packages
 
 ## MacOS: Homebrew

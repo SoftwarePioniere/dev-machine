@@ -78,10 +78,10 @@ Set-ExecutionPolicy Bypass -Scope Process
 $localpacks = (choco list --localonly)
 
 $packs0 = @(
-  @{
-    name = 'git';
-    params = '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration';
-  },
+  # @{
+  #   name = 'git';
+  #   params = '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration';
+  # },
   @{
     name = 'powershell-core';
     installarguments = 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1';
