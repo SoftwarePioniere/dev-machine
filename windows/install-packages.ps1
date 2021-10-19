@@ -125,13 +125,15 @@ $packs = @(
   'signal',
   'rdmfree',
   'jdk8',
-  'gradle'
+  'gradle',
+  'ssms'
 )
 
 $packs | ForEach-Object { choc -name $_ -installedpackages $localpacks }
 
 choc -name 'nodejs-lts' -version '12.22.1' -installedpackages $localpacks
 choc -name 'adobe-creative-cloud' -ignoreChecksums -installedpackages $localpacks
+
 
 
   
