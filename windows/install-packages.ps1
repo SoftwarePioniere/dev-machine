@@ -107,6 +107,7 @@ $packs = @(
   'putty.install',
   'postman',
   'azure-cli',
+  'microsoftazurestorageexplorer',
   'bitwarden',
   # 'eartrumpet'
   'snagit',
