@@ -126,7 +126,8 @@ $packs = @(
   'rdmfree',
   'jdk8',
   'gradle',
-  'ssms'
+  'ssms',
+  'mongodb-compass'
 )
 
 $packs | ForEach-Object { choc -name $_ -installedpackages $localpacks }
