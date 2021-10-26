@@ -2,8 +2,11 @@
 
 https://www.hanselman.com/blog/spend-less-time-cding-around-directories-with-the-powershell-z-shortcut
 Install-Module z -AllowClobber
+Install-Module -Name Terminal-Icons -Repository PSGallery
+
 code . $PROFILE
 Import-Module z
+Import-Module -Name Terminal-Icons
 
 # ===================================================================================
 
@@ -31,6 +34,7 @@ winget install JanDeDobbeleer.OhMyPosh
 # restart shell to reload PATH
 
 pwsh
+
 code . $PROFILE
 
 # insert code block
