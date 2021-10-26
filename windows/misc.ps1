@@ -1,11 +1,3 @@
-git config --global user.name "Tobias Boeker"
-git config --global user.email tb@softwarepioniere.de
-
-# wsl 
-https://docs.microsoft.com/de-de/windows/wsl/install
-wsl --install -d ubuntu-20.04
-https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
-
 # ===================================================================================
 
 https://www.hanselman.com/blog/spend-less-time-cding-around-directories-with-the-powershell-z-shortcut
@@ -14,24 +6,40 @@ code . $PROFILE
 Import-Module z
 
 # ===================================================================================
-$downloaddir = Join-Path $env:USERPROFILE -ChildPath 'Downloads'
-
-$lcuri = 'https://ftp.lancom.de/LANCOM-Archive/LC-VPN-Client/LC-Advanced-VPN-Client-Win-313-Rel-x86-64.exe'
-Invoke-WebRequest -Uri $lcuri -OutFile (Join-Path $downloaddir -ChildPath 'lc-vpn.exe')
-
-
-$lcuri = 'https://download.teamviewer.com/download/version_13x/TeamViewer_Setup.exe'
-Invoke-WebRequest -Uri $lcuri -OutFile (Join-Path $downloaddir -ChildPath 'TeamViewer_13_Setup.exe')
-
-# ===================================================================================
 
 # choco install -y visualstudio2019professional --package-parameters "--locale en-US"
 # choco install -y ssms
+
 choco install -y visualstudio2022professional-preview --pre --package-parameters "--locale en-US"
 
 choco install -y office365business --params='/productid:O365ProPlusRetail /exclude:"Teams Lync Publisher" /language:"de-DE"'
+
 # ===================================================================================
 
+https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal
+
+$downloaddir = Join-Path $env:USERPROFILE -ChildPath 'Downloads'
+$fonturi = 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip?WT.mc_id=-blog-scottha'
+Invoke-WebRequest -Uri $fonturi -OutFile (Join-Path $downloaddir -ChildPath 'CascadiaCode.zip')
+Expand-Archive -Path (Join-Path $downloaddir -ChildPath 'CascadiaCode.zip') -DestinationPath  (Join-Path $downloaddir -ChildPath 'CascadiaCode-Font') -Force
+
+# import font in windows
+
+# open windows terminal - powershell - settings - font: CaskaydiaCove NF
+
+winget install JanDeDobbeleer.OhMyPosh
+# restart shell to reload PATH
+
+pwsh
+code . $PROFILE
+
+# insert code block
+$file = 'ohmyposhv3-v2.json'
+$outf = Join-Path (Join-Path $env:USERPROFILE -ChildPath 'OneDrive') -ChildPath $file
+oh-my-posh --init --shell pwsh --config $outf | Invoke-Expression
+
+
+# ===================================================================================
 
 # PACKAGES - install-packages.ps1 ===================================================================================
 
