@@ -115,7 +115,7 @@ $packs = @(
   'jetbrainstoolbox',
   'powertoys',
   'robo3t.install',
-  'redis-desktop-manager',
+  # 'redis-desktop-manager',
   'dotnetcore-sdk',
   'dotnet-sdk',
   'jre8',
