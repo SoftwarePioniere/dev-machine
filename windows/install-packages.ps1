@@ -132,6 +132,8 @@ $packs = @(
 
 $packs | ForEach-Object { choc -name $_ -installedpackages $localpacks }
 
+
+choc -name 'redis-desktop-manager' -version '0.9.3' -installedpackages $localpacks
 choc -name 'nodejs-lts' -version '12.22.1' -installedpackages $localpacks
 choc -name 'adobe-creative-cloud' -ignoreChecksums -installedpackages $localpacks
 
