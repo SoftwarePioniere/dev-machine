@@ -109,7 +109,7 @@ $packs = @(
   'azure-cli',
   'microsoftazurestorageexplorer',
   'bitwarden',
-  # 'eartrumpet'
+  'eartrumpet'
   'snagit',
   'docker-for-windows',
   'jetbrainstoolbox',
@@ -127,7 +127,9 @@ $packs = @(
   'jdk8',
   'gradle',
   'ssms',
-  'mongodb-compass'
+  'mongodb-compass',
+  'audacity',
+  'sysinternals'
 )
 
 $packs | ForEach-Object { choc -name $_ -installedpackages $localpacks }
