@@ -121,7 +121,7 @@ $packs = @(
   'jre8',
   'paint.net',
   'whatsapp',
-  # 'spotify',
+  'spotify',
   'signal',
   # 'rdmfree',
   'jdk8',
