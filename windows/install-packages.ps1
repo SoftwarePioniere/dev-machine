@@ -113,23 +113,21 @@ $packs = @(
   'snagit',
   'docker-for-windows',
   'jetbrainstoolbox',
-  'powertoys',
   'robo3t.install',
-  # 'redis-desktop-manager',
   'dotnetcore-sdk',
   'dotnet-sdk',
   'jre8',
   'paint.net',
-  'whatsapp',
-  'spotify',
-  'signal',
-  # 'rdmfree',
   'jdk8',
   'gradle',
   'ssms',
   'mongodb-compass',
-  'audacity',
-  'sysinternals'
+  'powertoys'
+  # 'sysinternals'
+  # 'whatsapp',
+  # 'spotify',
+  # 'signal',  
+  # 'audacity'
 )
 
 $packs | ForEach-Object { choc -name $_ -installedpackages $localpacks }
@@ -141,4 +139,3 @@ choc -name 'adobe-creative-cloud' -ignoreChecksums -installedpackages $localpack
 
 
 
-  
