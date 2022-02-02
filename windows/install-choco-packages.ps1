@@ -94,35 +94,37 @@ $packs0 | ForEach-Object { choc -name $_.name -installarguments $_.installargume
 # choc -name 'powershell-core' -installarguments 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1' -installedpackages $localpacks
 
 $packs = @(
-  'vscode',
-  'microsoft-windows-terminal',
-  'microsoft-teams',
-  'firefoxesr',
-  'googlechrome',
-  '7zip.install',
-  'notepad2',
-  'adobereader',
-  'terminals',
-  'curl',
-  'putty.install',
-  'postman',
-  'azure-cli',
-  'microsoftazurestorageexplorer',
-  'bitwarden',
-  'eartrumpet'
-  'snagit',
-  'docker-for-windows',
-  'jetbrainstoolbox',
   'robo3t.install',
-  'dotnetcore-sdk',
   'dotnet-sdk',
-  'jre8',
   'paint.net',
-  'jdk8',
   'gradle',
-  'ssms',
-  'mongodb-compass',
-  'powertoys'
+  'curl',
+  'putty.install'
+
+  # ?? 'jdk8',
+#   'vscode',
+#   'microsoft-windows-terminal',
+#   'microsoft-teams',
+#   'firefoxesr',
+#   'googlechrome',
+#   '7zip.install',
+#   'notepad2',
+#   'adobereader',
+#   'terminals',
+
+# #  'postman',
+#   'azure-cli',
+#   'microsoftazurestorageexplorer',
+#   'bitwarden',
+#   'eartrumpet'
+#   'snagit',
+#   'docker-for-windows',
+#   'jetbrainstoolbox',
+  # 'dotnetcore-sdk', 
+  # 'jre8',
+  # 'ssms',
+  # 'mongodb-compass',
+  # 'powertoys'
   # 'sysinternals'
   # 'whatsapp',
   # 'spotify',
@@ -132,9 +134,8 @@ $packs = @(
 
 $packs | ForEach-Object { choc -name $_ -installedpackages $localpacks }
 
-
 choc -name 'redis-desktop-manager' -version '0.9.3' -installedpackages $localpacks
-choc -name 'nodejs-lts' -version '12.22.1' -installedpackages $localpacks
+# choc -name 'nodejs-lts' -version '12.22.1' -installedpackages $localpacks
 choc -name 'adobe-creative-cloud' -ignoreChecksums -installedpackages $localpacks
 
 

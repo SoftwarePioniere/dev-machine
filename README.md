@@ -9,6 +9,12 @@ Start-Process PowerShell -Verb RunAs
 powershell -Command "Start-Process PowerShell -Verb RunAs
 ```
 
+## Windows: Winget
+
+https://chrislayers.com/2021/08/01/scripting-winget/
+
+https://winget.run/
+
 ## Windows: Chocolatey
 
 https://chocolatey.org/install
