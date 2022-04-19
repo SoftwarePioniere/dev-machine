@@ -120,21 +120,20 @@ Foreach ($app in $apps) {
   }
   else {
     Write-host " Upgrading: " $app.name
-    $p = @('upgrade', '--exact', '--silent')
 
-    $cmd = 'winget'
-    $p += $app.name
-  
-    if ($null -ne $app.version) {
-      $p += "--version $($app.version)"
+    # upgrade only if no version
+    if ($null -eq $app.version) {
+      $p = @('upgrade', '--exact', '--silent')
+
+      $cmd = 'winget'
+      $p += $app.name
+
+      Write-Host "   $cmd $p"
+      Write-Host '  --------------'
+      & $cmd $p
+      Write-Host $LASTEXITCODE
+      # if ($LASTEXITCODE -ne 0) { throw 'error' }  
     }
-  
-    Write-Host "   $cmd $p"
-    Write-Host '  --------------'
-    & $cmd $p
-    Write-Host $LASTEXITCODE
-    # if ($LASTEXITCODE -ne 0) { throw 'error' }
-
   }
 }
 
