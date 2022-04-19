@@ -54,6 +54,7 @@ $apps = @(
   @{name = "Git.Git" },
   @{name = "Docker.DockerDesktop" },
   @{name = "Microsoft.dotnet" },
+  # @{name = "Microsoft.Office" },
   @{name = "Microsoft.Teams" },
   @{name = "Mozilla.Firefox.ESR" },
   @{name = "Google.Chrome" },
@@ -65,7 +66,7 @@ $apps = @(
   @{name = "Postman.Postman" },
   @{name = "Bitwarden.Bitwarden" },
   @{name = "File-New-Project.EarTrumpet" },
-  # @{name = "TechSmith.Snagit" },
+  @{name = "TechSmith.Snagit" },
   @{name = "JetBrains.Toolbox" },
   @{name = "Oracle.JavaRuntimeEnvironment" },
   @{name = "AdoptOpenJDK.OpenJDK.8" },
@@ -74,7 +75,9 @@ $apps = @(
   @{name = "Microsoft.PowerToys" },
   @{name = "OpenJS.NodeJS.LTS"; version = '12.22.8' },
   @{name = "qishibo.AnotherRedisDesktopManager" },  
-  @{name = "Insomnia.Insomnia" }
+  @{name = "Insomnia.Insomnia" },
+  @{name = "RustemMussabekov.Raindrop" }
+  # @{name = "TeamViewer" ; version = '13.2.36224' }
   # @{name = "xxx" },
 );
 
@@ -84,32 +87,54 @@ $apps = @(
 # 'jdk8', ??
 # 'gradle',
 
-$global:LASTEXITCODE = 0
-
 Foreach ($app in $apps) {
+  $global:LASTEXITCODE = 0
+
   Write-Host "---"
   Write-Host $app.name
+
+  
   $listApp = winget list --exact -q $app.name
+  
   if (![String]::Join("", $listApp).Contains($app.name)) {
-    Write-host "  Installing:" $app.name
+    Write-host " Installing:" $app.name
+  
+    $p = @('install', '--exact', '--silent', '--accept-package-agreements', '--accept-source-agreements')
+
     $cmd = 'winget'
-    $p = @('install', '--exact', '--silent', '--accept-package-agreements', '--accept-source-agreements ')
     $p += $app.name
-
-    if ($app.source -ne $null) {
-      $p += "--source $app.source"
+  
+    if ($null -ne $app.source) {
+      $p += "--source $($app.source)"
     }
-
-    if ($app.version -ne $null) {
-      $p += "--version $app.version"
+  
+    if ($null -ne $app.version) {
+      $p += "--version $($app.version)"
     }
-
-    Write-Host "$cmd $p"
+  
+    Write-Host "   $cmd $p"
+    Write-Host '  --------------'
     & $cmd $p
     if ($LASTEXITCODE -ne 0) { throw 'error' }
+
   }
   else {
-    Write-host "  Skipping Install of " $app.name
+    Write-host " Upgrading: " $app.name
+    $p = @('upgrade', '--exact', '--silent')
+
+    $cmd = 'winget'
+    $p += $app.name
+  
+    if ($null -ne $app.version) {
+      $p += "--version $($app.version)"
+    }
+  
+    Write-Host "   $cmd $p"
+    Write-Host '  --------------'
+    & $cmd $p
+    Write-Host $LASTEXITCODE
+    # if ($LASTEXITCODE -ne 0) { throw 'error' }
+
   }
 }
 

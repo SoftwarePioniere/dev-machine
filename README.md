@@ -42,7 +42,18 @@ https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenti
 
 https://www.damirscorner.com/blog/posts/20200221-UsingGitWithSshInWindows10.html
 
+## WSL
 
+```
+cd repos/github/dev-machine/wsl
+chmod +x prepare.sh
+./prepare.sh
+
+
+wsl --install -d ubuntu
+wsl --set-default ubuntu
+
+```
 
 
 
