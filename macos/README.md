@@ -76,3 +76,30 @@ git config --global difftool.vscode.cmd "code --wait --diff $LOCAL $REMOTE"
 git config --global merge.tool vscode
 git config --global mergetool.vscode.cmd "code --wait $MERGED"
 
+
+## NODE/NPM via Node Version Manager
+
+https://github.com/nvm-sh/nvm
+
+### install nvm
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+```
+
+### install latest release of node
+
+```
+nvm install node
+```
+
+### or install latest lts version
+
+```
+nvm install 'lts/*'
+```
+
+### or a specific version
+
+```
+nvm install 16.14.2
+```
