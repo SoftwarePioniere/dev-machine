@@ -17,3 +17,11 @@ $file = 'TeamViewer_13_Setup.exe'
 $outf = (Join-Path $downloaddir -ChildPath $file)
 Invoke-WebRequest -Uri $uri -OutFile $outf
 Start-Process $outf
+
+# ===================================================================================
+#  WINDOWS 11 Explorer Patcher
+$uri =  'https://github.com/valinet/ExplorerPatcher/releases/latest/download/ep_setup.exe'
+$file = 'ep_setup.exe'
+$outf = (Join-Path $downloaddir -ChildPath $file)
+Invoke-WebRequest -Uri $uri -OutFile $outf
+Start-Process $outf

@@ -124,6 +124,7 @@ Foreach ($app in $apps) {
     # upgrade only if no version
     if ($null -eq $app.version) {
       $p = @('upgrade', '--exact', '--silent')
+	    $p = @('upgrade')
 
       $cmd = 'winget'
       $p += $app.name
