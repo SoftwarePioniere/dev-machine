@@ -50,7 +50,7 @@ $apps = @(
   @{name = "Microsoft.VisualStudioCode" },
   @{name = "Microsoft.WindowsTerminal"; source = "msstore" },
   @{name = "Microsoft.AzureStorageExplorer" },
-  @{name = "Microsoft.PowerToys" },
+  # @{name = "Microsoft.PowerToys" },
   @{name = "Git.Git" },
   @{name = "Docker.DockerDesktop" },
   @{name = "Microsoft.dotnet" },
@@ -62,17 +62,16 @@ $apps = @(
   @{name = "Notepad2mod.Notepad2mod" },
   @{name = "Adobe.Acrobat.Reader.32-bit" },
   @{name = "Terminals.Terminals" },
-  @{name = "PuTTY.PuTTY" },
+  # @{name = "PuTTY.PuTTY" },
   @{name = "Postman.Postman" },
   @{name = "Bitwarden.Bitwarden" },
-  @{name = "File-New-Project.EarTrumpet" },
-  @{name = "TechSmith.Snagit" },
+  # @{name = "File-New-Project.EarTrumpet" },
+  # @{name = "TechSmith.Snagit" },
   @{name = "JetBrains.Toolbox" },
   @{name = "Oracle.JavaRuntimeEnvironment" },
   @{name = "AdoptOpenJDK.OpenJDK.8" },
   @{name = "Microsoft.SQLServerManagementStudio" },
-  @{name = "MongoDB.Compass.Community" },
-  @{name = "Microsoft.PowerToys" },
+  # @{name = "MongoDB.Compass.Community" },
   @{name = "OpenJS.NodeJS.LTS"; version = '12.22.8' },
   @{name = "qishibo.AnotherRedisDesktopManager" },  
   @{name = "Insomnia.Insomnia" },
@@ -94,23 +93,24 @@ Foreach ($app in $apps) {
   Write-Host $app.name
 
   
-  $listApp = winget list --exact -q $app.name
+  $listApp = winget list --exact --accept-source-agreements -q $app.name
   
   if (![String]::Join("", $listApp).Contains($app.name)) {
     Write-host " Installing:" $app.name
   
-    $p = @('install', '--exact', '--silent', '--accept-package-agreements', '--accept-source-agreements')
+    $p = @('install', '--exact', '--silent', '--accept-package-agreements')
 
     $cmd = 'winget'
-    $p += $app.name
-  
+    
     if ($null -ne $app.source) {
-      $p += "--source $($app.source)"
+      $p += @('--source', $app.source)
     }
   
     if ($null -ne $app.version) {
-      $p += "--version $($app.version)"
+      $p += @('--version'. $app.version )
     }
+  
+    $p += $app.name
   
     Write-Host "   $cmd $p"
     Write-Host '  --------------'
