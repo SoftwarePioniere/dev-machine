@@ -72,10 +72,10 @@ $apps = @(
   @{name = "AdoptOpenJDK.OpenJDK.8" },
   @{name = "Microsoft.SQLServerManagementStudio" },
   # @{name = "MongoDB.Compass.Community" },
-  @{name = "OpenJS.NodeJS.LTS"; version = '12.22.8' },
-  @{name = "qishibo.AnotherRedisDesktopManager" },  
-  @{name = "Insomnia.Insomnia" },
-  @{name = "RustemMussabekov.Raindrop" }
+  @{name = "OpenJS.NodeJS.LTS"; version = '12.22.8' }
+  # @{name = "qishibo.AnotherRedisDesktopManager" },  
+  # @{name = "Insomnia.Insomnia" },
+  # @{name = "RustemMussabekov.Raindrop" }
   # @{name = "TeamViewer" ; version = '13.2.36224' }
   # @{name = "xxx" },
 );
