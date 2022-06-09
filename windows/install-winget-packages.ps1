@@ -66,7 +66,7 @@ $apps = @(
   @{name = "JetBrains.Toolbox" },
   @{name = "Mozilla.Firefox.ESR" },
   @{name = "Notepad2mod.Notepad2mod" },
-  @{name = "Oracle.JavaRuntimeEnvironment" },
+  @{name = "Oracle.JavaRuntimeEnvironment"; version = '8.0.3310.9' },
   @{name = "OpenJS.NodeJS.LTS"; version = '12.22.8' },
   @{name = "Postman.Postman" },
   @{name = "Terminals.Terminals" }
