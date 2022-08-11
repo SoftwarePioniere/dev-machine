@@ -5,6 +5,7 @@ Install-Module z -AllowClobber
 Install-Module -Name Terminal-Icons -Repository PSGallery
 
 code . $PROFILE
+
 Import-Module z
 Import-Module -Name Terminal-Icons
 
@@ -13,9 +14,8 @@ Import-Module -Name Terminal-Icons
 # choco install -y visualstudio2019professional --package-parameters "--locale en-US"
 # choco install -y ssms
 
-choco install -y visualstudio2022professional --package-parameters "--locale en-US"
-
-choco install -y office365business --params='/productid:O365ProPlusRetail /exclude:"Teams Lync Publisher" /language:"de-DE"'
+# choco install -y visualstudio2022professional --package-parameters "--locale en-US"
+# choco install -y office365business --params='/productid:O365ProPlusRetail /exclude:"Teams Lync Publisher" /language:"de-DE"'
 
 # ===================================================================================
 
