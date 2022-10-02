@@ -1,38 +1,34 @@
-function runX() {
-  param(
-    [string] $name,
-    [string] $cmd,
-    [string[]] $parms
-  )
+Write-Host "=============================================================================================="
+Write-Output "Installing Choclatey Apps"
 
+$apps = @(
+    @{name = 'robo3t.install'}
+  , @{name = 'curl'}
+  , @{name = 'paint.net'}
+  , @{name = 'redis-desktop-manager'; version = '0.9.3'}
+  , @{name = 'paint.net'}
+  , @{name = 'adobe-creative-cloud'; ignoreChecksums = $true}  
+)
+
+
+Set-ExecutionPolicy Bypass -Scope Process
+ 
+$localpacks = (choco list --localonly)
+$app=$apps[0];
+
+Foreach ($app in $apps) {
   $global:LASTEXITCODE = 0
 
-  Write-Host "=============================================================================================="
-  Write-Host "$name -- $cmd $parms"
-  Write-Host "=============================================================================================="
-  & $cmd $parms
+  $name = $app.name
+  Write-Host "---"
 
-  if ($LASTEXITCODE -ne 0) { throw 'error' }
-
-}
-
-function choc() {
-  param(
-    [string] $name,
-    [string] $installarguments,
-    [string] $params,
-    [string] $version,
-    [switch] $ignoreChecksums,
-    [string[]] $installedpackages
-  )
-
-
+  Write-Host $name
 
   $cmd = 'choco'
 
   $localinstalled = $false
 
-  foreach ($item in $installedpackages) {
+  foreach ($item in $localpacks) {
     if ($item.ToLower().Contains($name)) {
       $localinstalled = $true
     }
@@ -45,64 +41,40 @@ function choc() {
   }
   else {
     $p += 'install'
-    Read-Host -Prompt "Install: $name"
+    # Read-Host -Prompt "Install: $name"
   }
 
   $p += $name
   $p += '-y'
 
-  if ($installarguments) {
-    $p += '--install-arguments="' + $installarguments + '"'
+  if ($app.installarguments) {
+    $p += '--install-arguments="' + $app.installarguments + '"'
   }
   
-  if ($ignoreChecksums) {
+  if ($app.ignoreChecksums) {
     $p += '--ignore-checksums'
   }
-  
-  if ($version) {
-    $p += '--version=' + $version
+
+  if ($app.$version) {
+    $p += '--version=' + $app.version
   }
 
-  if ($params) {
+  if ($app.$params) {
     $p += '--params'
-    $p += $params
+    $p += $app.params
   }
-  
-  
-  runX -name $name -cmd $cmd -parms $p
- 
+    
+  Write-Host "   $cmd $p"
+  Write-Host '  --------------'
+  & $cmd $p
+  if ($LASTEXITCODE -ne 0) { throw 'error' }
+
 }
 
-Set-ExecutionPolicy Bypass -Scope Process
- 
-$localpacks = (choco list --localonly)
+  # 'gradle',
 
-$packs0 = @(
-  # @{
-  #   name = 'git';
-  #   params = '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration';
-  # },
-  @{
-    name = 'powershell-core';
-    installarguments = 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1';
-  }
-)
-
-$packs0 | ForEach-Object { choc -name $_.name -installarguments $_.installarguments -params $_.params  -installedpackages $localpacks }
-
-# choc -name 'git' -params '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration' -installedpackages $localpacks
-# choc -name 'powershell-core' -installarguments 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1' -installedpackages $localpacks
-
-$packs = @(
-  'robo3t.install',
-  'dotnet-sdk',
-  'paint.net',
-  'gradle',
-  'curl',
-  'putty.install'
-
-  # ?? 'jdk8',
-#   'vscode',
+  # 'putty.install'
+    # 'vscode',
 #   'microsoft-windows-terminal',
 #   'microsoft-teams',
 #   'firefoxesr',
@@ -130,13 +102,3 @@ $packs = @(
   # 'spotify',
   # 'signal',  
   # 'audacity'
-)
-
-$packs | ForEach-Object { choc -name $_ -installedpackages $localpacks }
-
-choc -name 'redis-desktop-manager' -version '0.9.3' -installedpackages $localpacks
-# choc -name 'nodejs-lts' -version '12.22.1' -installedpackages $localpacks
-choc -name 'adobe-creative-cloud' -ignoreChecksums -installedpackages $localpacks
-
-
-
