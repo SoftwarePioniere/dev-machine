@@ -28,6 +28,7 @@ $apps = @(
   , @{name = 'OpenJS.NodeJS.LTS'; version = '12.22.8' }
   , @{name = 'Postman.Postman' }
   , @{name = 'Terminals.Terminals' }
+  , @{name = 'CoreyButler.NVMforWindows' }
 
   # @{name = 'Microsoft.Office" },
   # @{name = "Microsoft.PowerToys" },
