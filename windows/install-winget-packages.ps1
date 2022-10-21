@@ -25,11 +25,13 @@ $apps = @(
   , @{name = 'Mozilla.Firefox.ESR' }
   , @{name = 'Notepad2mod.Notepad2mod' }
   , @{name = 'Oracle.JavaRuntimeEnvironment'; version = '8.0.3310.9' }
-  , @{name = 'OpenJS.NodeJS.LTS'; version = '12.22.8' }
+
   , @{name = 'Postman.Postman' }
   , @{name = 'Terminals.Terminals' }
-  , @{name = 'CoreyButler.NVMforWindows' }
 
+  , @{name = 'CoreyButler.NVMforWindows'; version = '1.1.9' }
+
+  # , @{name = 'OpenJS.NodeJS.LTS'; version = '12.22.8' }
   # @{name = 'Microsoft.Office" },
   # @{name = "Microsoft.PowerToys" },
   # @{name = "PuTTY.PuTTY" },
