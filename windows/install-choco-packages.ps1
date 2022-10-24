@@ -77,18 +77,18 @@ Set-ExecutionPolicy Bypass -Scope Process
  
 $localpacks = (choco list --localonly)
 
-$packs0 = @(
-  # @{
-  #   name = 'git';
-  #   params = '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration';
-  # },
-  @{
-    name = 'powershell-core';
-    installarguments = 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1';
-  }
-)
+# $packs0 = @(
+#   # @{
+#   #   name = 'git';
+#   #   params = '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration';
+#   # },
+#   @{
+#     name = 'powershell-core';
+#     installarguments = 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1';
+#   }
+# )
 
-$packs0 | ForEach-Object { choc -name $_.name -installarguments $_.installarguments -params $_.params  -installedpackages $localpacks }
+# $packs0 | ForEach-Object { choc -name $_.name -installarguments $_.installarguments -params $_.params  -installedpackages $localpacks }
 
 # choc -name 'git' -params '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration' -installedpackages $localpacks
 # choc -name 'powershell-core' -installarguments 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1' -installedpackages $localpacks
@@ -96,10 +96,10 @@ $packs0 | ForEach-Object { choc -name $_.name -installarguments $_.installargume
 $packs = @(
   'robo3t.install',
   'dotnet-sdk',
-  'paint.net',
-  'gradle',
-  'curl',
-  'putty.install'
+  'paint.net'
+  # 'gradle',
+  # 'curl',
+  # 'putty.install'
 
   # ?? 'jdk8',
 #   'vscode',
