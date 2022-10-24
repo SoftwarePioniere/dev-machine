@@ -73,37 +73,8 @@ Foreach ($app in $apps) {
 
   # 'gradle',
 
-<<<<<<< HEAD
-# $packs0 = @(
-#   # @{
-#   #   name = 'git';
-#   #   params = '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration';
-#   # },
-#   @{
-#     name = 'powershell-core';
-#     installarguments = 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1';
-#   }
-# )
-
-# $packs0 | ForEach-Object { choc -name $_.name -installarguments $_.installarguments -params $_.params  -installedpackages $localpacks }
-
-# choc -name 'git' -params '/NoShellIntegration /NoGuiHereIntegration /NoShellHereIntegration' -installedpackages $localpacks
-# choc -name 'powershell-core' -installarguments 'ADDEXPLORERCONTEXTMENUOPENPOWERSHELL=1' -installedpackages $localpacks
-
-$packs = @(
-  'robo3t.install',
-  'dotnet-sdk',
-  'paint.net'
-  # 'gradle',
-  # 'curl',
-  # 'putty.install'
-
-  # ?? 'jdk8',
-#   'vscode',
-=======
   # 'putty.install'
     # 'vscode',
->>>>>>> d324f72916d90d71cc09cf57b9250dad28938e97
 #   'microsoft-windows-terminal',
 #   'microsoft-teams',
 #   'firefoxesr',
