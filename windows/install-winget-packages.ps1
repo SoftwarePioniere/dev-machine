@@ -11,6 +11,7 @@ $apps = @(
   , @{name = 'Microsoft.AzureStorageExplorer' }
   , @{name = 'Microsoft.DotNet.SDK.5' }
   , @{name = 'Microsoft.DotNet.SDK.6' }
+  , @{name = 'Microsoft.DotNet.SDK.7' }
   , @{name = 'Microsoft.SQLServerManagementStudio' }
   , @{name = 'Microsoft.Teams' }
   , @{name = 'Microsoft.WindowsTerminal' }
