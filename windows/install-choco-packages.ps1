@@ -4,7 +4,7 @@ Write-Output "Installing Choclatey Apps"
 $apps = @(
     @{name = 'robo3t.install'}
   , @{name = 'curl'}
-  , @{name = 'paint.net'}
+  , @{name = 'firacode'}
   , @{name = 'redis-desktop-manager'; version = '0.9.3'}
   , @{name = 'paint.net'}
   , @{name = 'adobe-creative-cloud'; ignoreChecksums = $true}  
