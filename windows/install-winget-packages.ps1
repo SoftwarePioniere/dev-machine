@@ -16,8 +16,6 @@ $apps = @(
   # , @{name = 'Microsoft.Teams' }
   , @{name = 'Microsoft.WindowsTerminal' }
   , @{name = 'Adobe.Acrobat.Reader.64-bit' }
-  # , @{name = 'Oracle.JDK.19' }
-  # , @{name = 'AdoptOpenJDK.OpenJDK.8' }
   , @{name = 'Microsoft.OpenJDK.17' }
   , @{name = '7zip.7zip' }
   , @{name = 'Bitwarden.Bitwarden' }
@@ -27,7 +25,6 @@ $apps = @(
   , @{name = 'JetBrains.Toolbox' }
   , @{name = 'Mozilla.Firefox.ESR' }
   , @{name = 'Notepad2mod.Notepad2mod' }
-  # , @{name = 'Oracle.JavaRuntimeEnvironment'; version = '8.0.3310.9' }
 
   , @{name = 'Postman.Postman' }
   , @{name = 'Terminals.Terminals' }
@@ -35,18 +32,16 @@ $apps = @(
   # , @{name = 'CoreyButler.NVMforWindows'; version = '1.1.9' }
   , @{name = 'CoreyButler.NVMforWindows' }
 
-  # , @{name = 'OpenJS.NodeJS.LTS'; version = '12.22.8' }
-  # @{name = 'Microsoft.Office" },
-  # @{name = "Microsoft.PowerToys" },
-  # @{name = "PuTTY.PuTTY" },
-  # @{name = "File-New-Project.EarTrumpet" },
-  # @{name = "TechSmith.Snagit" },
-  # @{name = "MongoDB.Compass.Community" },
-  # @{name = "qishibo.AnotherRedisDesktopManager" },
-  # @{name = "Insomnia.Insomnia" },
+  # @{name = 'Microsoft.Office" }
+  # @{name = "Microsoft.PowerToys" }
+  # @{name = "PuTTY.PuTTY" }
+  # @{name = "File-New-Project.EarTrumpet" }
+  # @{name = "TechSmith.Snagit" }
+  # @{name = "MongoDB.Compass.Community" }
+  # @{name = "qishibo.AnotherRedisDesktopManager" }
+  # @{name = "Insomnia.Insomnia" }
   # @{name = "RustemMussabekov.Raindrop" }
   # @{name = "TeamViewer" ; version = '13.2.36224' }
-  # @{name = "xxx" },
 );
 
 Foreach ($app in $apps) {
