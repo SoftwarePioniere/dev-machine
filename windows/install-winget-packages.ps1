@@ -1,36 +1,44 @@
+[Cmdletbinding()]
+Param(
+  [string] $scope = 'admin'
+  , [switch] $dryRun    
+)
+
 Write-Host "=============================================================================================="
 Write-Output "Installing Winget Apps"
+Write-Output "Scope: $scope"
+
 
 $apps = @(
 
-    @{name = 'Git.Git';  interactive = $true }
-  # @{name = 'Git.Git';  override = '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /NOCANCEL /SP- /LOG /COMPONENTS='assoc,gitlfs,!ext' /o:PathOption=Cmd' },
-  , @{name = 'Microsoft.VisualStudioCode'; override = '/SILENT /mergetasks=''!runcode,addcontextmenufiles,addcontextmenufolders''' }
-  , @{name = 'Microsoft.PowerShell' }
-  , @{name = 'Microsoft.AzureCLI' }
-  , @{name = 'Microsoft.AzureStorageExplorer' }
-  , @{name = 'Microsoft.DotNet.SDK.5' }
-  , @{name = 'Microsoft.DotNet.SDK.6' }
-  , @{name = 'Microsoft.DotNet.SDK.7' }
-  , @{name = 'Microsoft.SQLServerManagementStudio' }
+  @{name = 'Git.Git'; interactive = $true ; scope = 'admin' }
+  # @{name = 'Git.Git';  override = '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /NOCANCEL /SP- /LOG /COMPONENTS='assoc,gitlfs,!ext' /o:PathOption=Cmd' ; scope = 'admin'  },
+  , @{name = 'Microsoft.VisualStudioCode'; override = '/SILENT /mergetasks=''!runcode,addcontextmenufiles,addcontextmenufolders'''; scope = 'user' }
+  , @{name = 'Microsoft.PowerShell' ; scope = 'admin' }
+  , @{name = 'Microsoft.AzureCLI' ; scope = 'admin' }
+  , @{name = 'Microsoft.AzureStorageExplorer' ; scope = 'admin' }
+  , @{name = 'Microsoft.DotNet.SDK.5' ; scope = 'admin' }
+  , @{name = 'Microsoft.DotNet.SDK.6' ; scope = 'admin' }
+  , @{name = 'Microsoft.DotNet.SDK.7' ; scope = 'admin' }
+  , @{name = 'Microsoft.SQLServerManagementStudio' ; scope = 'admin' }
   # , @{name = 'Microsoft.Teams' }
-  , @{name = 'Microsoft.WindowsTerminal' }
-  , @{name = 'Adobe.Acrobat.Reader.64-bit' }
-  , @{name = 'Microsoft.OpenJDK.17' }
-  , @{name = '7zip.7zip' }
-  , @{name = 'Bitwarden.Bitwarden' }
-  , @{name = 'Docker.DockerDesktop' }
+  , @{name = 'Microsoft.WindowsTerminal' ; scope = 'admin' }
+  , @{name = 'Adobe.Acrobat.Reader.64-bit' ; scope = 'admin' }
+  , @{name = 'Microsoft.OpenJDK.17' ; scope = 'admin' }
+  , @{name = '7zip.7zip' ; scope = 'admin' }
+  , @{name = 'Bitwarden.Bitwarden' ; scope = 'admin' }
+  , @{name = 'Docker.DockerDesktop' ; scope = 'admin' }
 
-  , @{name = 'Google.Chrome' }
-  , @{name = 'JetBrains.Toolbox' }
-  , @{name = 'Mozilla.Firefox.ESR' }
-  , @{name = 'Notepad2mod.Notepad2mod' }
+  , @{name = 'Google.Chrome' ; scope = 'admin' }
+  , @{name = 'JetBrains.Toolbox' ; scope = 'admin' }
+  , @{name = 'Mozilla.Firefox.ESR' ; scope = 'admin' }
+  , @{name = 'Notepad2mod.Notepad2mod' ; scope = 'admin' }
 
-  , @{name = 'Postman.Postman' }
-  , @{name = 'Terminals.Terminals' }
+  , @{name = 'Postman.Postman' ; scope = 'admin' }
+  , @{name = 'Terminals.Terminals' ; scope = 'admin' }
 
   # , @{name = 'CoreyButler.NVMforWindows'; version = '1.1.9' }
-  , @{name = 'CoreyButler.NVMforWindows' }
+  , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin' }
 
   # @{name = 'Microsoft.Office" }
   # @{name = "Microsoft.PowerToys" }
@@ -49,68 +57,81 @@ Foreach ($app in $apps) {
 
   Write-Host "---"
   Write-Host $app.name
+  Write-host " Scope:" $app.scope
 
-  $listApp = winget list --exact --accept-source-agreements -q $app.name
+  if ($app.scope -eq $scope) {
 
-  if (![String]::Join("", $listApp).Contains($app.name)) {
-    Write-host " Installing:" $app.name
+    $listApp = winget list --exact --accept-source-agreements -q $app.name
 
-    $p = @('install', '--exact', '--accept-package-agreements')
+    if (![String]::Join("", $listApp).Contains($app.name)) {
+  		
+      Write-host " Installing:" $app.name  
 
-    $cmd = 'winget'
-
-    if ($null -eq $app.interactive) {
-        $p += @('--silent')
-    }
-
-    if ($null -ne $app.nosilent) {
-      if ($app.interactive -eq $true) {
-        $p += @('--interactive')
-      } else {
-        $p += @('--silent')
-      }
-    }
-
-    if ($null -ne $app.source) {
-      $p += @('--source', $app.source)
-    }
-
-    if ($null -ne $app.version) {
-      $p += @('--version', $app.version )
-    }
-
-    if ($null -ne $app.override) {
-      $p += @('--override', $app.override )
-    }
-
-    $p += $app.name
-
-    Write-Host "   $cmd $p"
-    Write-Host '  --------------'
-    & $cmd $p
-    if ($LASTEXITCODE -ne 0) { throw 'error' }
-
-  }
-  else {
-    Write-host " Upgrading: " $app.name
-
-    # upgrade only if no version
-    if ($null -eq $app.version) {
-      $p = @('upgrade', '--exact', '--silent')
-	    $p = @('upgrade')
+      $p = @('install', '--exact', '--accept-package-agreements')
 
       $cmd = 'winget'
-      $p += $app.name
+
+      if ($null -eq $app.interactive) {
+        $p += @('--silent')
+      }
+
+      if ($null -ne $app.nosilent) {
+        if ($app.interactive -eq $true) {
+          $p += @('--interactive')
+        }
+        else {
+          $p += @('--silent')
+        }
+      }
+
+      if ($null -ne $app.source) {
+        $p += @('--source', $app.source)
+      }
+
+      if ($null -ne $app.version) {
+        $p += @('--version', $app.version )
+      }
 
       if ($null -ne $app.override) {
         $p += @('--override', $app.override )
       }
 
+      $p += $app.name
+
       Write-Host "   $cmd $p"
       Write-Host '  --------------'
-      & $cmd $p
-      Write-Host $LASTEXITCODE
-      # if ($LASTEXITCODE -ne 0) { throw 'error' }
+      if (!$dryRun) {
+        & $cmd $p
+        if ($LASTEXITCODE -ne 0) { throw 'error' }		
+      }
+    
     }
+    else {
+      Write-host " Upgrading: " $app.name
+
+      # upgrade only if no version
+      if ($null -eq $app.version) {
+        $p = @('upgrade', '--exact', '--silent')
+        $p = @('upgrade')
+
+        $cmd = 'winget'
+        $p += $app.name
+
+        if ($null -ne $app.override) {
+          $p += @('--override', $app.override )
+        }
+
+        Write-Host "   $cmd $p"
+        Write-Host '  --------------'
+      
+        if (!$dryRun) {
+          & $cmd $p
+          Write-Host $LASTEXITCODE
+        }
+        # if ($LASTEXITCODE -ne 0) { throw 'error' }
+      }
+    }
+  } else {
+    Write-Host " Skipping: " $app.name
   }
 }
