@@ -50,9 +50,32 @@ brew install --cask oracle-jdk
 
 ```
 
+
+## XCODE
+
+```
+
+Download Xcode
+https://developer.apple.com/download/all/?q=xcode%2014.2
+
+# unzip
+xip -x Xcode_14.2.xip
+mv Xcode.app /Applications/Xcode_14.2.app
+
+xip -x Xcode_14.3.1.xip
+mv Xcode.app /Applications/Xcode_14.3.1.app
+
+# select version
+sudo xcode-select -s /Applications/Xcode_14.2.app
+sudo xcode-select -s /Applications/Xcode_14.3.1.app
+
+# check version
+xcodebuild -version
+
+```
+
 ## App Store
 
-- xcode
 
 
 ## SSH
