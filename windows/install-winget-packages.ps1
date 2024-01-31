@@ -39,6 +39,7 @@ $apps = @(
 
   # , @{name = 'CoreyButler.NVMforWindows'; version = '1.1.9' }
   , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin' }
+  , @{name = 'FireDaemon.OpenSSL' ; scope = 'admin' }
 
   # @{name = 'Microsoft.Office" }
   # @{name = "Microsoft.PowerToys" }
