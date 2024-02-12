@@ -38,7 +38,8 @@ $apps = @(
   , @{name = 'Terminals.Terminals' ; scope = 'admin' }
 
   # , @{name = 'CoreyButler.NVMforWindows'; version = '1.1.9' }
-  , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin' }
+  # , @{name = 'CoreyButler.NVMforWindows' ; scope = 'user' }
+  , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin'; version = '1.1.11' }
   , @{name = 'FireDaemon.OpenSSL' ; scope = 'admin' }
 
   # @{name = 'Microsoft.Office" }
