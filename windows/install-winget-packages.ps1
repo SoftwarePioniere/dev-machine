@@ -20,6 +20,7 @@ $apps = @(
   , @{name = 'Microsoft.DotNet.SDK.5' ; scope = 'admin' }
   , @{name = 'Microsoft.DotNet.SDK.6' ; scope = 'admin' }
   , @{name = 'Microsoft.DotNet.SDK.7' ; scope = 'admin' }
+  , @{name = 'Microsoft.DotNet.SDK.8' ; scope = 'admin' }
   , @{name = 'Microsoft.SQLServerManagementStudio' ; scope = 'admin' }
   # , @{name = 'Microsoft.Teams' }
   , @{name = 'Microsoft.WindowsTerminal' ; scope = 'admin' }
