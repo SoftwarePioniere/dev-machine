@@ -2,12 +2,11 @@ Write-Host "====================================================================
 Write-Output "Installing Choclatey Apps"
 
 $apps = @(
-    @{name = 'robo3t.install'}
-  , @{name = 'curl'}
-  , @{name = 'firacode'}
+  @{name = 'httpie'}
   , @{name = 'redis-desktop-manager'; version = '0.9.3'}
-  , @{name = 'paint.net'}
-  , @{name = 'adobe-creative-cloud'; ignoreChecksums = $true}  
+  # @{name = 'robo3t.install'}
+  # , @{name = 'paint.net'}
+  # , @{name = 'firacode'}
 )
 
 
@@ -55,11 +54,11 @@ Foreach ($app in $apps) {
     $p += '--ignore-checksums'
   }
 
-  if ($app.$version) {
+  if ($app.version) {
     $p += '--version=' + $app.version
   }
 
-  if ($app.$params) {
+  if ($app.params) {
     $p += '--params'
     $p += $app.params
   }

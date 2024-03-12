@@ -22,7 +22,6 @@ $apps = @(
   , @{name = 'Microsoft.DotNet.SDK.7' ; scope = 'admin' }
   , @{name = 'Microsoft.DotNet.SDK.8' ; scope = 'admin' }
   , @{name = 'Microsoft.SQLServerManagementStudio' ; scope = 'admin' }
-  # , @{name = 'Microsoft.Teams' }
   , @{name = 'Microsoft.WindowsTerminal' ; scope = 'admin' }
   , @{name = 'Adobe.Acrobat.Reader.64-bit' ; scope = 'admin' }
   , @{name = 'Microsoft.OpenJDK.17' ; scope = 'admin' }
@@ -38,12 +37,15 @@ $apps = @(
   , @{name = 'Postman.Postman' ; scope = 'admin' }
   , @{name = 'Terminals.Terminals' ; scope = 'admin' }
 
-  # , @{name = 'CoreyButler.NVMforWindows'; version = '1.1.9' }
-  # , @{name = 'CoreyButler.NVMforWindows' ; scope = 'user' }
   , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin'; version = '1.1.11' }
-  , @{name = 'FireDaemon.OpenSSL' ; scope = 'admin' }
+  # , @{name = 'Schniz.fnm' ; scope = 'admin' }
 
-  # @{name = 'Microsoft.Office" }
+  , @{name = 'FireDaemon.OpenSSL' ; scope = 'admin' }
+  , @{name = 'cURL.cURL' ; scope = 'admin' }
+  
+  # , @{name = 'dotPDN.PaintDotNet' ; scope = 'admin' }
+  , @{name = '3TSoftwareLabs.Robo3T' ; scope = 'admin' }
+
   # @{name = "Microsoft.PowerToys" }
   # @{name = "PuTTY.PuTTY" }
   # @{name = "File-New-Project.EarTrumpet" }
@@ -53,6 +55,7 @@ $apps = @(
   # @{name = "Insomnia.Insomnia" }
   # @{name = "RustemMussabekov.Raindrop" }
   # @{name = "TeamViewer" ; version = '13.2.36224' }
+
 );
 
 Foreach ($app in $apps) {
