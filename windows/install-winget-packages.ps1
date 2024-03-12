@@ -63,9 +63,13 @@ Foreach ($app in $apps) {
 
   Write-Host "---"
   Write-Host $app.name
-  Write-host " Scope:" $app.scope
+  $appScope = $app.scope
+  if (!$appScope) {
+    $appScope = 'admin'
+  }
+  Write-host " Scope:" $appScope
 
-  if ($app.scope -eq $scope) {
+  if ($appScope -eq $scope) {
 
     $listApp = winget list --exact --accept-source-agreements -q $app.name
 
