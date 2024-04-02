@@ -6,7 +6,7 @@ $apps = @(
   , @{name = 'redis-desktop-manager'; version = '0.9.3'}
   # @{name = 'robo3t.install'}
   # , @{name = 'paint.net'}
-  # , @{name = 'firacode'}
+  , @{name = 'firacode'}
 )
 
 
