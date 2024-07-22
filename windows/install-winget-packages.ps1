@@ -16,7 +16,7 @@ $apps = @(
   , @{name = 'Microsoft.VisualStudioCode'; override = '/SILENT /mergetasks=''!runcode,addcontextmenufiles,addcontextmenufolders'''; scope = 'user' }
   , @{name = 'Microsoft.PowerShell' ; scope = 'admin' }
   , @{name = 'Microsoft.AzureCLI' ; scope = 'admin' }
-  , @{name = 'Microsoft.AzureStorageExplorer' ; scope = 'admin' }
+  , @{name = 'Microsoft.Azure.StorageExplorer' ; scope = 'admin' }
   , @{name = 'Microsoft.DotNet.SDK.5' ; scope = 'admin' }
   , @{name = 'Microsoft.DotNet.SDK.6' ; scope = 'admin' }
   , @{name = 'Microsoft.DotNet.SDK.7' ; scope = 'admin' }
