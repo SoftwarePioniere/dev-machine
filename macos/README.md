@@ -44,14 +44,13 @@ sudo gem install cocoapods
 # Falls es dabei zu fehler kommt ->
 gem update --system 3.5.11
 
-# Shell-Profil anpassen | entweder "~/.zprofile" oder "~/.bash-profile" editieren und folgende Zeile einfügen
-export JAVA_HOME=$(/usr/libexec/java_home) 
-
-
 sudo ln -sfn $HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 
 ```
+### Shell-Profil anpassen
+Shell-Profil anpassen | entweder "~/.zprofile" oder "~/.bash-profile" editieren und folgende Zeile einfügen
+export JAVA_HOME=$(/usr/libexec/java_home) 
 
 ### [Docker installieren](https://www.docker.com)
 
