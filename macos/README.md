@@ -1,5 +1,104 @@
 # MACOS
 
+## 1. BREW-CLI installieren
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+## 2. Software installieren
+### Bitte jeden Befehl einzeln ausführen, da es bei einigen Packeten CLI-befehle gibt damit diese auch über die CLI aufgerufen werden können
+```
+brew install --cask powershell
+brew install --cask google-chrome
+brew install --cask microsoft-edge
+brew install --cask jetbrains-toolbox
+brew install --cask azure-data-studio
+brew install --cask onedrive
+brew install --cask bitwarden
+brew install --cask microsoft-azure-storage-explorer
+brew install --cask visual-studio-code
+brew install --cask vlc
+brew install --cask whatsapp
+brew install --cask microsoft-teams
+brew install --cask postman
+brew install azure-cli
+brew install nvm
+brew install git
+brew install cocoapods
+brew install ruby
+brew install openjdk
+
+# DOTNET-SDKs installieren
+
+brew tap isen-ng/dotnet-sdk-versions
+brew install --cask dotnet-sdk6-0-400
+brew install --cask dotnet-sdk7-0-400
+brew install --cask dotnet-sdk8-0-200
+brew install --cask dotnet-sdk8-0-300
+
+# XCode installieren
+https://apps.apple.com/de/app/xcode/id497799835?
+
+# cocoapods installieren (Packagemanager für MacOS)
+sudo gem install cocoapods
+
+# Falls es dabei zu fehler kommt ->
+gem update --system 3.5.11
+
+# Shell-Profil anpassen | entweder "~/.zprofile" oder "~/.bash-profile" editieren und folgende Zeile einfügen
+export JAVA_HOME=$(/usr/libexec/java_home) 
+
+
+sudo ln -sfn $HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+
+```
+
+### [Docker installieren](https://www.docker.com)
+
+### install latest release of node
+
+```
+nvm install node
+```
+
+### or install latest lts version
+
+```
+nvm install 'lts/*'
+```
+
+### or a specific version
+
+```
+nvm install 16.14.2
+```
+
+### Apps via Jetbraims-ToolBox installieren
+
+1. Command + space
+2. "jetbrains" eingeben
+3. Enter drücken -> Oben rechts sollte ein kleines fenster erscheinen
+4. Folgende Programme installieren -> Webstorm | Rider | Android Studio
+
+
+## 3 Optionale
+
+```
+# Brew in Powershell ausführbar machen
+# Terminal öffnen und "pwsh" eingebeb -> "ENTER"
+# folgende Zeile einfügen und mit Enter ausführen
+New-Item -Path (Split-Path -Parent -Path $PROFILE.CurrentUserAllHosts) -ItemType Directory -Force Add-Content -Path $PROFILE.CurrentUserAllHosts -Value '$($HOMEBREW_PREFIX/bin/brew shellenv) | Invoke-Expression'
+
+
+brew install --cask discord
+brew install --cask godot
+brew install -—cask Spotify
+```
+
+
+
+# Ältere Version
+
 ## LINKS
 
 - https://brew.sh
