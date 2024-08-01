@@ -23,11 +23,14 @@ brew install --cask postman
 brew install azure-cli
 brew install nvm
 brew install git
+brew install openjdk
 brew install cocoapods
 brew install ruby
-brew install openjdk
 
-# DOTNET-SDKs installieren
+# falls es beim installieren vom Paket "Ruby" gibt, folgenden befehl ausführen
+brew reinstall ruby
+
+# DOTNET-SDKs installieren -> Hier alles auswählen und im Terminal einfügen
 
 brew tap isen-ng/dotnet-sdk-versions
 brew install --cask dotnet-sdk6-0-400
@@ -35,7 +38,10 @@ brew install --cask dotnet-sdk7-0-400
 brew install --cask dotnet-sdk8-0-200
 brew install --cask dotnet-sdk8-0-300
 
-# XCode installieren
+## Anschließend mal schauen, ob alle dotnet-sdks korrekt installiert sind
+dotnet --list-sdks
+
+# XCode installieren -> Hier im Safari-Browser einfügen. Der Appstore sollte sich dann öffnen.
 https://apps.apple.com/de/app/xcode/id497799835?
 
 # cocoapods installieren (Packagemanager für MacOS)
@@ -50,6 +56,7 @@ sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 ```
 ### Shell-Profil anpassen
 Shell-Profil anpassen | entweder "~/.zprofile" oder "~/.bash-profile" editieren und folgende Zeile einfügen
+
 export JAVA_HOME=$(/usr/libexec/java_home) 
 
 ### [Docker installieren](https://www.docker.com)
@@ -72,7 +79,7 @@ nvm install 'lts/*'
 nvm install 16.14.2
 ```
 
-### Apps via Jetbraims-ToolBox installieren
+### Apps via Jetbrains-ToolBox installieren
 
 1. Command + space
 2. "jetbrains" eingeben
