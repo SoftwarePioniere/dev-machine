@@ -45,6 +45,8 @@ $apps = @(
   
   # , @{name = 'dotPDN.PaintDotNet' ; scope = 'admin' }
   , @{name = '3TSoftwareLabs.Robo3T' ; scope = 'admin' }
+  
+  , @{name = 'TechSmith.Snagit.2024' ; scope = 'admin' }
 
   # @{name = "Microsoft.PowerToys" }
   # @{name = "PuTTY.PuTTY" }
