@@ -41,7 +41,7 @@ $apps = @(
   , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin'; version = '1.1.11' }
   # , @{name = 'Schniz.fnm' ; scope = 'admin' }
 
-  , @{name = 'FireDaemon.OpenSSL' ; scope = 'admin' }
+  # , @{name = 'FireDaemon.OpenSSL' ; scope = 'admin' }
   , @{name = 'cURL.cURL' ; scope = 'admin' }
   
   # , @{name = 'dotPDN.PaintDotNet' ; scope = 'admin' }
