@@ -49,6 +49,7 @@ $apps = @(
   
   , @{name = 'TechSmith.Snagit.2024' ; scope = 'admin' }
   , @{name = 'Microsoft.PowerToys' ; scope = 'admin' }
+  , @{name = 'Figma.Figma' ; scope = 'admin' }
   
   # @{name = "Microsoft.PowerToys" }
   # @{name = "PuTTY.PuTTY" }
