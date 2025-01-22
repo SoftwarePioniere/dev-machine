@@ -24,7 +24,7 @@ $apps = @(
   , @{name = 'Microsoft.DotNet.SDK.9' ; scope = 'admin' }
   , @{name = 'Microsoft.SQLServerManagementStudio' ; scope = 'admin' }
   , @{name = 'Microsoft.WindowsTerminal' ; scope = 'admin' }
-  , @{name = 'Adobe.Acrobat.Reader.64-bit' ; scope = 'admin' }
+  # , @{name = 'Adobe.Acrobat.Reader.64-bit' ; scope = 'admin' }
   , @{name = 'Microsoft.OpenJDK.17' ; scope = 'admin' }
   , @{name = '7zip.7zip' ; scope = 'admin' }
   , @{name = 'Bitwarden.Bitwarden' ; scope = 'admin' }
