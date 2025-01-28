@@ -1,6 +1,6 @@
 [Cmdletbinding()]
 Param(
-  [string] $scope = 'admin'
+  [string] $scope = 'null'
   , [switch] $dryRun    
 )
 
@@ -37,10 +37,10 @@ $apps = @(
 
   , @{name = 'Postman.Postman' ; scope = 'admin' }
   , @{name = 'Terminals.Terminals' ; scope = 'admin' }
-
-  , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin'; version = '1.1.11' }
+  
+  , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin' }
   # , @{name = 'Schniz.fnm' ; scope = 'admin' }
-
+  
   # , @{name = 'FireDaemon.OpenSSL' ; scope = 'admin' }
   , @{name = 'cURL.cURL' ; scope = 'admin' }
   
@@ -50,6 +50,8 @@ $apps = @(
   , @{name = 'TechSmith.Snagit.2024' ; scope = 'admin' }
   , @{name = 'Microsoft.PowerToys' ; scope = 'admin' }
   , @{name = 'Figma.Figma' ; scope = 'admin' }
+  , @{name = 'Wakatime.DesktopWakatime' ; scope = 'admin' }
+  , @{name = 'Bruno.Bruno' ; scope = 'admin' }
   
   # @{name = "Microsoft.PowerToys" }
   # @{name = "PuTTY.PuTTY" }
@@ -74,7 +76,7 @@ Foreach ($app in $apps) {
   }
   Write-host " Scope:" $appScope
 
-  if ($appScope -eq $scope) {
+  if ( ($appScope -eq $scope) -or ($scope -eq 'null') ) {
 
     $listApp = winget list --exact --accept-source-agreements -q $app.name
 

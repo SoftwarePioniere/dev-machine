@@ -1,0 +1,1 @@
+.\install-winget-packages.ps1
