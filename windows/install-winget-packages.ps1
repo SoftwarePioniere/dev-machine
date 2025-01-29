@@ -52,6 +52,7 @@ $apps = @(
   , @{name = 'Figma.Figma' ; scope = 'admin' }
   , @{name = 'Wakatime.DesktopWakatime' ; scope = 'admin' }
   , @{name = 'Bruno.Bruno' ; scope = 'admin' }
+  , @{name = 'MongoDB.Compass.Full' ; scope = 'admin' }
   
   # @{name = "Microsoft.PowerToys" }
   # @{name = "PuTTY.PuTTY" }
