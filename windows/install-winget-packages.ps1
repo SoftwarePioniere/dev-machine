@@ -4,11 +4,6 @@ Param(
   , [switch] $dryRun    
 )
 
-Write-Host "=============================================================================================="
-Write-Output "Installing Winget Apps"
-Write-Output "Scope: $scope"
-
-
 $apps = @(
 
   @{name = 'Git.Git'; interactive = $true ; scope = 'admin' }
@@ -24,36 +19,35 @@ $apps = @(
   , @{name = 'Microsoft.DotNet.SDK.9' ; scope = 'admin' }
   , @{name = 'Microsoft.SQLServerManagementStudio' ; scope = 'admin' }
   , @{name = 'Microsoft.WindowsTerminal' ; scope = 'admin' }
-  # , @{name = 'Adobe.Acrobat.Reader.64-bit' ; scope = 'admin' }
   , @{name = 'Microsoft.OpenJDK.17' ; scope = 'admin' }
   , @{name = '7zip.7zip' ; scope = 'admin' }
   , @{name = 'Bitwarden.Bitwarden' ; scope = 'admin' }
   , @{name = 'Docker.DockerDesktop' ; scope = 'admin' }
-
+  
   , @{name = 'Google.Chrome' ; scope = 'admin' }
   , @{name = 'JetBrains.Toolbox' ; scope = 'admin' }
   , @{name = 'Mozilla.Firefox.ESR' ; scope = 'admin' }
   , @{name = 'Notepad2mod.Notepad2mod' ; scope = 'admin' }
-
+  
   , @{name = 'Postman.Postman' ; scope = 'admin' }
   , @{name = 'Terminals.Terminals' ; scope = 'admin' }
   
-  , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin' }
-  # , @{name = 'Schniz.fnm' ; scope = 'admin' }
-  
-  # , @{name = 'FireDaemon.OpenSSL' ; scope = 'admin' }
+  , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin' }  
   , @{name = 'cURL.cURL' ; scope = 'admin' }
   
-  # , @{name = 'dotPDN.PaintDotNet' ; scope = 'admin' }
-  , @{name = '3TSoftwareLabs.Robo3T' ; scope = 'admin' }
-  
+  , @{name = '3TSoftwareLabs.Robo3T' ; scope = 'admin' }  
   , @{name = 'TechSmith.Snagit.2024' ; scope = 'admin' }
   , @{name = 'Microsoft.PowerToys' ; scope = 'admin' }
   , @{name = 'Figma.Figma' ; scope = 'admin' }
   , @{name = 'Wakatime.DesktopWakatime' ; scope = 'admin' }
   , @{name = 'Bruno.Bruno' ; scope = 'admin' }
   , @{name = 'MongoDB.Compass.Full' ; scope = 'admin' }
+  , @{name = 'HTTPie.HTTPie' ; scope = 'admin' }
   
+  # , @{name = 'Adobe.Acrobat.Reader.64-bit' ; scope = 'admin' }
+  # @{name = 'FireDaemon.OpenSSL' ; scope = 'admin' }
+  # @{name = 'dotPDN.PaintDotNet' ; scope = 'admin' }
+  # @{name = 'Schniz.fnm' ; scope = 'admin' }
   # @{name = "Microsoft.PowerToys" }
   # @{name = "PuTTY.PuTTY" }
   # @{name = "File-New-Project.EarTrumpet" }
@@ -65,6 +59,12 @@ $apps = @(
   # @{name = "TeamViewer" ; version = '13.2.36224' }
 
 );
+
+Write-Host "=============================================================================================="
+Write-Output "Installing Winget Apps"
+Write-Output "Scope: $scope"
+Write-Host "=============================================================================================="
+
 
 Foreach ($app in $apps) {
   $global:LASTEXITCODE = 0
