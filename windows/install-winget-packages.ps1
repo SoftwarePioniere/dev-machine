@@ -43,6 +43,12 @@ $apps = @(
   , @{name = 'Bruno.Bruno' ; scope = 'admin' }
   , @{name = 'MongoDB.Compass.Full' ; scope = 'admin' }
   , @{name = 'HTTPie.HTTPie' ; scope = 'admin' }
+  , @{name = 'ekvedaras.redis-gui' ; scope = 'admin' }
+  
+  , @{name = 'Python.Python.3.12' ; scope = 'admin' }
+  , @{name = 'Chocolatey.Chocolatey' ; scope = 'admin' }
+  
+  
   
   # , @{name = 'Adobe.Acrobat.Reader.64-bit' ; scope = 'admin' }
   # @{name = 'FireDaemon.OpenSSL' ; scope = 'admin' }
