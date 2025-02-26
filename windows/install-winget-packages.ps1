@@ -9,6 +9,7 @@ $apps = @(
   @{name = 'Git.Git'; interactive = $true ; scope = 'admin' }
   # @{name = 'Git.Git';  override = '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /NOCANCEL /SP- /LOG /COMPONENTS='assoc,gitlfs,!ext' /o:PathOption=Cmd' ; scope = 'admin'  },
   , @{name = 'Microsoft.VisualStudioCode'; override = '/SILENT /mergetasks=''!runcode,addcontextmenufiles,addcontextmenufolders'''; scope = 'user' }
+  
   , @{name = 'Microsoft.PowerShell' ; scope = 'admin' }
   , @{name = 'Microsoft.AzureCLI' ; scope = 'admin' }
   , @{name = 'Microsoft.Azure.StorageExplorer' ; scope = 'admin' }
@@ -17,6 +18,8 @@ $apps = @(
   , @{name = 'Microsoft.DotNet.SDK.7' ; scope = 'admin' }
   , @{name = 'Microsoft.DotNet.SDK.8' ; scope = 'admin' }
   , @{name = 'Microsoft.DotNet.SDK.9' ; scope = 'admin' }
+  , @{name = 'Python.Python.3.12' ; scope = 'admin' }
+
   , @{name = 'Microsoft.SQLServerManagementStudio' ; scope = 'admin' }
   , @{name = 'Microsoft.WindowsTerminal' ; scope = 'admin' }
   , @{name = 'Microsoft.OpenJDK.17' ; scope = 'admin' }
@@ -24,28 +27,30 @@ $apps = @(
   , @{name = 'Bitwarden.Bitwarden' ; scope = 'admin' }
   , @{name = 'Docker.DockerDesktop' ; scope = 'admin' }
   
-  , @{name = 'Google.Chrome' ; scope = 'admin' }
   , @{name = 'JetBrains.Toolbox' ; scope = 'admin' }
+
+  , @{name = 'Google.Chrome' ; scope = 'admin' }
   , @{name = 'Mozilla.Firefox.ESR' ; scope = 'admin' }
-  , @{name = 'Notepad2mod.Notepad2mod' ; scope = 'admin' }
   
-  , @{name = 'Postman.Postman' ; scope = 'admin' }
+  , @{name = 'Notepad2mod.Notepad2mod' ; scope = 'admin' }
   , @{name = 'Terminals.Terminals' ; scope = 'admin' }
   
-  , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin' }  
+  , @{name = 'Postman.Postman' ; scope = 'admin' }
+  , @{name = 'Bruno.Bruno' ; scope = 'admin' }
+  , @{name = 'HTTPie.HTTPie' ; scope = 'admin' }
   , @{name = 'cURL.cURL' ; scope = 'admin' }
+  
+  , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin' }  
   
   , @{name = '3TSoftwareLabs.Robo3T' ; scope = 'admin' }  
   , @{name = 'TechSmith.Snagit.2024' ; scope = 'admin' }
   , @{name = 'Microsoft.PowerToys' ; scope = 'admin' }
   , @{name = 'Figma.Figma' ; scope = 'admin' }
+
   , @{name = 'Wakatime.DesktopWakatime' ; scope = 'admin' }
-  , @{name = 'Bruno.Bruno' ; scope = 'admin' }
   , @{name = 'MongoDB.Compass.Full' ; scope = 'admin' }
-  , @{name = 'HTTPie.HTTPie' ; scope = 'admin' }
   , @{name = 'ekvedaras.redis-gui' ; scope = 'admin' }
   
-  , @{name = 'Python.Python.3.12' ; scope = 'admin' }
   , @{name = 'Chocolatey.Chocolatey' ; scope = 'admin' }
   
   
