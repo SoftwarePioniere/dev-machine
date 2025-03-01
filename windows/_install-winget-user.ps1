@@ -1,1 +1,0 @@
-.\install-winget-packages.ps1 -scope user

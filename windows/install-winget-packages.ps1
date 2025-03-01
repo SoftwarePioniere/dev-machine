@@ -1,7 +1,7 @@
 [Cmdletbinding()]
 Param(
-  [string] $scope = 'null'
-  , [switch] $dryRun    
+  [switch] $dryRun    
+  # , [string] $scope = 'null'
 )
 
 $apps = @(
@@ -43,7 +43,8 @@ $apps = @(
   , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin' }  
   
   , @{name = '3TSoftwareLabs.Robo3T' ; scope = 'admin' }  
-  , @{name = 'TechSmith.Snagit.2024' ; scope = 'admin' }
+  , @{name = 'TechSmith.Snagit.2024' ; scope = 'admin'; delete = $true }
+  , @{name = 'TechSmith.Snagit.2025' ; scope = 'admin' }
   , @{name = 'Microsoft.PowerToys' ; scope = 'admin' }
   , @{name = 'Figma.Figma' ; scope = 'admin' }
 
@@ -52,8 +53,7 @@ $apps = @(
   , @{name = 'ekvedaras.redis-gui' ; scope = 'admin' }
   
   , @{name = 'Chocolatey.Chocolatey' ; scope = 'admin' }
-  
-  
+   
   
   # , @{name = 'Adobe.Acrobat.Reader.64-bit' ; scope = 'admin' }
   # @{name = 'FireDaemon.OpenSSL' ; scope = 'admin' }
@@ -71,9 +71,10 @@ $apps = @(
 
 );
 
+
 Write-Host "=============================================================================================="
 Write-Output "Installing Winget Apps"
-Write-Output "Scope: $scope"
+# Write-Output "Scope: $scope"
 Write-Host "=============================================================================================="
 
 
@@ -82,68 +83,89 @@ Foreach ($app in $apps) {
 
   Write-Host "---"
   Write-Host $app.name
-  $appScope = $app.scope
-  if (!$appScope) {
-    $appScope = 'admin'
-  }
-  Write-host " Scope:" $appScope
 
-  if ( ($appScope -eq $scope) -or ($scope -eq 'null') ) {
+  # $appScope = $app.scope
+  # if (!$appScope) {
+  #   $appScope = 'admin'
+  # }
+  # Write-host " Scope:" $appScope
 
-    $listApp = winget list --exact --accept-source-agreements -q $app.name
+  # if ( ($appScope -eq $scope) -or ($scope -eq 'null') ) {
 
-    if (![String]::Join("", $listApp).Contains($app.name)) {
+  $listApp = winget list --exact --accept-source-agreements -q $app.name
+  $isInstalled = [String]::Join("", $listApp).Contains($app.name)
+  Write-Host " Installed: $isInstalled"
+
+  $cmd = 'winget'
+
+  if ($isInstalled -eq $false) {
   		
-      Write-host " Installing:" $app.name  
+    Write-host " Installing: $($app.name)" 
 
-      $p = @('install', '--exact', '--accept-package-agreements')
+    $p = @('install', '--exact', '--accept-package-agreements')
 
-      $cmd = 'winget'
+    if ($null -eq $app.interactive) {
+      $p += @('--silent')
+    }
 
-      if ($null -eq $app.interactive) {
+    if ($null -ne $app.nosilent) {
+      if ($app.interactive -eq $true) {
+        $p += @('--interactive')
+      }
+      else {
         $p += @('--silent')
       }
+    }
 
-      if ($null -ne $app.nosilent) {
-        if ($app.interactive -eq $true) {
-          $p += @('--interactive')
-        }
-        else {
-          $p += @('--silent')
-        }
-      }
+    if ($null -ne $app.source) {
+      $p += @('--source', $app.source)
+    }
 
-      if ($null -ne $app.source) {
-        $p += @('--source', $app.source)
-      }
+    if ($null -ne $app.version) {
+      $p += @('--version', $app.version )
+    }
 
-      if ($null -ne $app.version) {
-        $p += @('--version', $app.version )
-      }
+    if ($null -ne $app.override) {
+      $p += @('--override', $app.override )
+    }
 
-      if ($null -ne $app.override) {
-        $p += @('--override', $app.override )
-      }
+    $p += $app.name
 
+    Write-Host "   $cmd $p"
+    Write-Host '  --------------'
+    if (!$dryRun) {
+      & $cmd $p
+      Write-Host "LASTEXITCODE: $LASTEXITCODE"
+      # if ($LASTEXITCODE -ne 0) { throw 'error' }		
+    }
+    
+  } 
+  if ($isInstalled -eq $true) {
+
+    if ($app.delete) {
+
+      Write-Host " Uninstalling: " $app.name
+
+      $p = @('uninstall')
       $p += $app.name
 
       Write-Host "   $cmd $p"
       Write-Host '  --------------'
       if (!$dryRun) {
         & $cmd $p
-        if ($LASTEXITCODE -ne 0) { throw 'error' }		
+        Write-Host "LASTEXITCODE: $LASTEXITCODE"
+        # if ($LASTEXITCODE -ne 0) { throw 'error' }
       }
-    
     }
     else {
-      Write-host " Upgrading: " $app.name
+        
+      Write-Host " Upgrading: " $app.name
 
       # upgrade only if no version
       if ($null -eq $app.version) {
         $p = @('upgrade', '--exact', '--silent')
         $p = @('upgrade')
 
-        $cmd = 'winget'
         $p += $app.name
 
         if ($null -ne $app.override) {
@@ -155,12 +177,14 @@ Foreach ($app in $apps) {
       
         if (!$dryRun) {
           & $cmd $p
-          Write-Host $LASTEXITCODE
+          Write-Host "LASTEXITCODE: $LASTEXITCODE"
         }
         # if ($LASTEXITCODE -ne 0) { throw 'error' }
       }
     }
-  } else {
+
+  }
+  else {
     Write-Host " Skipping: " $app.name
   }
 }
