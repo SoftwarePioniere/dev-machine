@@ -1,6 +1,6 @@
 [Cmdletbinding()]
 Param(
-  [switch] $dryRun    
+  [switch] $dryRun
   # , [string] $scope = 'null'
 )
 
@@ -9,7 +9,7 @@ $apps = @(
   @{name = 'Git.Git'; interactive = $true ; scope = 'admin' }
   # @{name = 'Git.Git';  override = '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /NOCANCEL /SP- /LOG /COMPONENTS='assoc,gitlfs,!ext' /o:PathOption=Cmd' ; scope = 'admin'  },
   , @{name = 'Microsoft.VisualStudioCode'; override = '/SILENT /mergetasks=''!runcode,addcontextmenufiles,addcontextmenufolders'''; scope = 'user' }
-  
+
   , @{name = 'Microsoft.PowerShell' ; scope = 'admin' }
   , @{name = 'Microsoft.AzureCLI' ; scope = 'admin' }
   , @{name = 'Microsoft.Azure.StorageExplorer' ; scope = 'admin' }
@@ -26,24 +26,23 @@ $apps = @(
   , @{name = '7zip.7zip' ; scope = 'admin' }
   , @{name = 'Bitwarden.Bitwarden' ; scope = 'admin' }
   , @{name = 'Docker.DockerDesktop' ; scope = 'admin' }
-  
+
   , @{name = 'JetBrains.Toolbox' ; scope = 'admin' }
 
   , @{name = 'Google.Chrome' ; scope = 'admin' }
   , @{name = 'Mozilla.Firefox.ESR' ; scope = 'admin' }
-  
+
   , @{name = 'Notepad2mod.Notepad2mod' ; scope = 'admin' }
   , @{name = 'Terminals.Terminals' ; scope = 'admin' }
-  
+
   , @{name = 'Postman.Postman' ; scope = 'admin' }
   , @{name = 'Bruno.Bruno' ; scope = 'admin' }
   , @{name = 'HTTPie.HTTPie' ; scope = 'admin' }
   , @{name = 'cURL.cURL' ; scope = 'admin' }
-  
-  , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin' }  
-  
-  , @{name = '3TSoftwareLabs.Robo3T' ; scope = 'admin' }  
-  , @{name = 'TechSmith.Snagit.2024' ; scope = 'admin'; delete = $true }
+
+  , @{name = 'CoreyButler.NVMforWindows' ; scope = 'admin' }
+
+  , @{name = '3TSoftwareLabs.Robo3T' ; scope = 'admin' }
   , @{name = 'TechSmith.Snagit.2025' ; scope = 'admin' }
   , @{name = 'Microsoft.PowerToys' ; scope = 'admin' }
   , @{name = 'Figma.Figma' ; scope = 'admin' }
@@ -51,17 +50,17 @@ $apps = @(
   , @{name = 'Wakatime.DesktopWakatime' ; scope = 'admin' }
   , @{name = 'MongoDB.Compass.Full' ; scope = 'admin' }
   , @{name = 'ekvedaras.redis-gui' ; scope = 'admin' }
-  
+
   , @{name = 'Chocolatey.Chocolatey' ; scope = 'admin' }
-   
-  
+
+  # @{name = "Microsoft.PowerToys" }
+  # @{name = "File-New-Project.EarTrumpet" }
+
   # , @{name = 'Adobe.Acrobat.Reader.64-bit' ; scope = 'admin' }
   # @{name = 'FireDaemon.OpenSSL' ; scope = 'admin' }
   # @{name = 'dotPDN.PaintDotNet' ; scope = 'admin' }
   # @{name = 'Schniz.fnm' ; scope = 'admin' }
-  # @{name = "Microsoft.PowerToys" }
   # @{name = "PuTTY.PuTTY" }
-  # @{name = "File-New-Project.EarTrumpet" }
   # @{name = "TechSmith.Snagit" }
   # @{name = "MongoDB.Compass.Community" }
   # @{name = "qishibo.AnotherRedisDesktopManager" }
@@ -98,9 +97,29 @@ Foreach ($app in $apps) {
 
   $cmd = 'winget'
 
+  $toDelete = $false;
+  if ($app.delete) {
+    $toDelete = $app.delete
+  }
+
+  if ($isInstalled -and $toDelete) {
+    Write-Host " Uninstalling: " $app.name
+
+    $p = @('uninstall')
+    $p += $app.name
+
+    Write-Host "   $cmd $p"
+    Write-Host '  --------------'
+    if (!$dryRun) {
+      & $cmd $p
+      Write-Host "LASTEXITCODE: $LASTEXITCODE"
+      if ($LASTEXITCODE -ne 0) { throw 'error' }
+    }
+  }
+
   if ($isInstalled -eq $false) {
-  		
-    Write-host " Installing: $($app.name)" 
+
+    Write-host " Installing: $($app.name)"
 
     $p = @('install', '--exact', '--accept-package-agreements')
 
@@ -136,55 +155,44 @@ Foreach ($app in $apps) {
     if (!$dryRun) {
       & $cmd $p
       Write-Host "LASTEXITCODE: $LASTEXITCODE"
-      # if ($LASTEXITCODE -ne 0) { throw 'error' }		
+
+      $valids = @( 0, -1978335189)
+      if ($valids -notcontains $LASTEXITCODE) { throw 'error' }
     }
-    
-  } 
-  if ($isInstalled -eq $true) {
 
-    if ($app.delete) {
+  }
 
-      Write-Host " Uninstalling: " $app.name
+  if ( ($isInstalled -eq $true) -and ($toDelete -eq $false)) {
 
-      $p = @('uninstall')
+    Write-Host " Upgrading: " $app.name
+
+    # upgrade only if no version
+    if ($null -eq $app.version) {
+      $p = @('upgrade', '--exact', '--silent')
+      $p = @('upgrade')
+
       $p += $app.name
+
+      if ($null -ne $app.override) {
+        $p += @('--override', $app.override )
+      }
 
       Write-Host "   $cmd $p"
       Write-Host '  --------------'
+
       if (!$dryRun) {
         & $cmd $p
         Write-Host "LASTEXITCODE: $LASTEXITCODE"
-        # if ($LASTEXITCODE -ne 0) { throw 'error' }
       }
+
+      $valids = @( 0, -1978335189)
+      if ($valids -notcontains $LASTEXITCODE) { throw 'error' }
     }
-    else {
-        
-      Write-Host " Upgrading: " $app.name
-
-      # upgrade only if no version
-      if ($null -eq $app.version) {
-        $p = @('upgrade', '--exact', '--silent')
-        $p = @('upgrade')
-
-        $p += $app.name
-
-        if ($null -ne $app.override) {
-          $p += @('--override', $app.override )
-        }
-
-        Write-Host "   $cmd $p"
-        Write-Host '  --------------'
-      
-        if (!$dryRun) {
-          & $cmd $p
-          Write-Host "LASTEXITCODE: $LASTEXITCODE"
-        }
-        # if ($LASTEXITCODE -ne 0) { throw 'error' }
-      }
-    }
-
   }
-  else {
-    Write-Host " Skipping: " $app.name
-  }
+
+
 }
+# else {
+#   Write-Host " Skipping: " $app.name
+# }
+
