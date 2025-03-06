@@ -51,7 +51,7 @@ $apps = @(
   , @{name = 'MongoDB.Compass.Full' ; scope = 'admin' }
   , @{name = 'ekvedaras.redis-gui' ; scope = 'admin' }
 
-  , @{name = 'Chocolatey.Chocolatey' ; scope = 'admin' }
+  # , @{name = 'Chocolatey.Chocolatey' ; scope = 'admin' }
 
   # @{name = "Microsoft.PowerToys" }
   # @{name = "File-New-Project.EarTrumpet" }
