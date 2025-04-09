@@ -1,15 +1,28 @@
-# wsl 
+
+# requirements
+# https://learn.microsoft.com/de-de/windows/wsl/install-manual
+
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+#reboot
+
+# install
 # https://docs.microsoft.com/de-de/windows/wsl/install
 
-wsl --install -d ubuntu-20.04
+# install wsl
+wsl --install
 
-# https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+# install ubuntu
+wsl --install -d Ubuntu-22.04
 
-$downloaddir = Join-Path $env:USERPROFILE -ChildPath 'Downloads'
-$uri = 'https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi'
-$file = 'wsl_update_x64.msi'
-$outf = (Join-Path $downloaddir -ChildPath $file)
 
-Invoke-WebRequest -Uri $uri -OutFile $outf
+# list all installed distros
+wsl -l -v
+wsl --list --online
 
-Start-Process $outf
+# UNINSTALL
+# https://gist.github.com/4wk-/889b26043f519259ab60386ca13ba91b
+
+dism.exe /online /disable-feature /featurename:VirtualMachinePlatform /norestart
+dism.exe /online /disable-feature /featurename:Microsoft-Windows-Subsystem-Linux /norestart
