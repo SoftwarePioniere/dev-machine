@@ -19,6 +19,8 @@ wsl --install -d Ubuntu-22.04
 
 # list all installed distros
 wsl -l -v
+wsl --unregister Ubuntu
+
 wsl --list --online
 
 # UNINSTALL
